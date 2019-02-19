@@ -1,0 +1,113 @@
+https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/Temel%20Python%20Objeleri%20ve%20Veri%20Yap%C4%B1lar%C4%B1/Temel%20Python%20Objeleri%20ve%20Veri%20Yap%C4%B1lar%C4%B1%20-%20%C3%96dev%20ve%20%C3%87%C3%B6z%C3%BCmleri/Programlama%20%C3%96devi%20-%20Temel%20Python%20Objeleri%20ve%20Veri%20Yap%C4%B1lar%C4%B1.ipynb
+
+pythonanywhere
+
+https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/Temel%20Python%20Objeleri%20ve%20Veri%20Yap%C4%B1lar%C4%B1/Temel%20Python%20Objeleri%20ve%20Veri%20Yap%C4%B1lar%C4%B1%20-%20%C3%96dev%20ve%20%C3%87%C3%B6z%C3%BCmleri/Programlama%20%C3%96devi%20%C3%87%C3%B6z%C3%BCmleri%20-%20Temel%20Python%20Objeleri%20ve%20Veri%20Yap%C4%B1lar%C4%B1.ipynb
+
+https://www.yazilimbilimi.org/python-mantiksal-baglaclar/
+
+
+https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/Ko%C5%9Fullu%20Durumlar/Ko%C5%9Fullu%20Durumlar%20-%20%C3%96dev%20ve%20%C3%87%C3%B6z%C3%BCmleri/Programlama%20%C3%96devi%20%20-%20Ko%C5%9Fullu%20Durumlar.ipynb
+
+https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/Ko%C5%9Fullu%20Durumlar/Ko%C5%9Fullu%20Durumlar%20-%20%C3%96dev%20ve%20%C3%87%C3%B6z%C3%BCmleri/Programlama%20%C3%96devi%20%C3%87%C3%B6z%C3%BCmleri%20-%20Ko%C5%9Fullu%20Durumlar.ipynb
+
+https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/D%C3%B6ng%C3%BCler/D%C3%B6ng%C3%BCler%20-%20%C3%96dev%20ve%20%C3%87%C3%B6z%C3%BCmleri/Programlama%20%C3%96devi%20-%20%20D%C3%B6ng%C3%BCler.ipynb
+
+https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/D%C3%B6ng%C3%BCler/D%C3%B6ng%C3%BCler%20-%20%C3%96dev%20ve%20%C3%87%C3%B6z%C3%BCmleri/Programlama%20%C3%96devi%20%C3%87%C3%B6z%C3%BCmleri%20-%20%20D%C3%B6ng%C3%BCler.ipynb
+
+--opencv indirmek
+Pip install opencv
+
+--web botu yazmak için
+requests, beautifulsoup, Mechanize
+
+pascal üçgeni
+https://paste.ubuntu.com/p/z82TXp6y9Q/?fbclid=IwAR0t5QT4pT6OKkJmaIQf85XE76Ydp8DyOf6AcDmZKkBIL5T-4KaWUqpgB-4
+
+--pyaudio
+https://sharewebegin.blogspot.com/2013/06/real-time-voice-chat-example-in-python.html?fbclid=IwAR1b8ruaW7Ugd0qKNHkXVQ7wP_Mx3aB8TSvHX8umbiyFX7mMo_kMy13hrEg
+
+--resim üzerinden text okuma
+Tesseract
+https://medium.com/@ibrahimirdem/tesseract-ile-yaz%C4%B1-karakteri-tan%C4%B1ma-python-8ca5e746951?fbclid=IwAR2p3MCObXSudX3FT6hCsUDA4nYb1iHrUnORXTRqlrRXYgvTpYVLg15yHeQ
+
+--klavyeden basılan tuşları öğrenmek
+pygame
+
+ücretsiz sanal pos kullanmak için
+Iyzico
+https://www.paytr.com/
+
+yüz tanıma
+https://github.com/ageitgey/face_recognition?fbclid=IwAR0PwyhGY-Y6BMxY21V8_yiqsuOhPfO64A3K0qXbRnf2ChEl5sxhB52l5gI
+
+--pyqt5 dersleri
+https://www.youtube.com/playlist?list=PLOl6SW8nLgJx9guRvfylVwrMXIginZhin&fbclid=IwAR1yYGwAKeXOqk70oYL4eqQXnLsOyk6ie5oDdWKWn5K70ZoR7oRUFALYobw
+
+
+--random tahmin
+https://paste.ubuntu.com/p/t4pMbZsZnt/?fbclid=IwAR28b5DYciQrMFt18XlOKvZz1aJ2tFqQ4CHBpT1IosigrbLwdIU7KLISogw
+
+--elektronik
+pigpio
+
+--girilen sayıların adını yazan program
+https://paste.ubuntu.com/p/sKgN7NcmX5/?fbclid=IwAR0-Sh1EoSGZLZ4i9RM8ohPrdQ6bACPl-3-8f9wnsuqKRY5HDLY9Zyw2cnY
+
+android geliştirmek için
+kivy, Flutter
+
+--SQL sorgusu çalıştırmak
+https://docs.djangoproject.com/en/2.1/topics/db/sql/?fbclid=IwAR2SMtE93dJ_lGxZuETdlekMkbvZw5ZX8qEWvat3cMq2oLmEsyfSrXvwYE0
+
+--text to speech
+https://www.coogger.com/@hakancelik/pyttsx-kullanm/
+
+--DJANGO
+https://www.coogger.com/@hakancelik/ozel-yonetim-komutlar-nasl-yaplr/?fbclid=IwAR3RwZzJKqEZeu8EB-8BXRZrv6AsAcji9h72wZQc3kTZEGGuKeCiOmQKDvU
+
+--mysql için
+mysql-connector-python
+
+--bir metodun ne iş yaptığını öğrenmek
+>>help(a.append)
+>>help(liste.insert)
+
+--makina öğrenmesi(PyTorch)
+https://www.youtube.com/watch?v=Y1a_uzYHVps&list=PLRRY18KNZTgWqNVa5SeqUi7r925NjXTJn&fbclid=IwAR1IguOUbMHU7iHw9dMc2fnwdvU3txpFx8JBzVYtT9O_hAnm1fpuAFGiZIE
+
+--basit bir fonksiyon tanımlama
+def selamla()
+	print("merhaba")
+	print("nasılsın")
+>>type(selamla)  --selamla nın tipinin ne olduğu
+function
+
+>>selamla() -- bu şekide fonksiyon çağırılıyor
+
+--resmin boyutunu değiştirmek için
+opencv -- resize fonksiyonu kullanm/
+
+--touchscreen modulu
+python canvas paint
+
+python object orianted
+https://github.com/ets-labs/python-dependency-injector?fbclid=IwAR10SNaPCcXvWZTBv_b6maQj37L1XHI5zYxL15adlbN67G6yDRO7CFN2FU0
+
+python class miras alma
+https://paste.ubuntu.com/p/yd9Px59pHD/?fbclid=IwAR1efCYEdn-h99ynDqetDBlLlRbNAp5JLKvlV6sMsug-MAHpKKqqWAyBc3E
+
+executebla yapmak
+pyinstaller x.py
+
+web scraping ve crawling
+https://www.udemy.com/scrapy-tutorial-web-scraping-with-python/?fbclid=%5B%27IwAR0vFXXqkoJK25UntmZgOFCTxsOZhbstbAhr4E3C3NNvN2V3kXjj283muvk%27%5D
+
+django oylama yapma modülü
+django-vote
+
+sqlite örnek
+https://paste.ubuntu.com/p/tBzGPPkPwr/?fbclid=IwAR1BGLIgiSCOJS1-8s88x9Kv8xP1o8EW47W6p57BolScDjikqHG-K-3O3fo
+
+Ödev
+https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/Mod%C3%BCller/Programlama%20%C3%96devi%20%20-%20%20Mod%C3%BCller.ipynb
