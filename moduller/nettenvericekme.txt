@@ -1,0 +1,117 @@
+Requests ve BeautifulSoup Modülü
+Bu videoda internetten veri çekmemizi ve bu verileri parçalamamızı sağlayan requests ve BeautifulSoup modüllerini öğreneceğiz. Ancak bu modüller Python ile hazır gelmediğinden ilk olarak bunları internetten indirmemiz gerekiyor.
+
+Windows üzerinde kurulum
+Windows üzerinde bu iki modulü indirmemiz için cmd'yi açıyoruz ve şu iki komutu sırayla çalıştırıyoruz.
+
+pip3 install requests
+
+pip3 install beautifulsoup4
+
+Bunları çalıştırdığımız zaman requests ve beautifulsoup kurulmuş olacak.
+
+Kurulumda herhangi bir sıkıntı yaşarsanız çekinmeden sorabilirsiniz.
+
+Ubuntu üzerinde kurulum
+Terminali açın ve ilk önce şu komutu çalıştırın.
+
+sudo apt-get install python-setuptools
+
+Daha sonra şu komutları çalıştırın.
+
+sudo pip3 install requests
+
+sudo pip3 install beautifulsoup4
+
+Kurulumda herhangi bir sıkıntı yaşarsanız çekinmeden sorabilirsiniz.
+
+Artık internet sayfalarındaki verileri parçalamaya başlayabiliriz. Ancak videoya başlamadan önce sıkıntı yaşamamak için html etiketlerinden div,table, td, tr , a gibi etiketlere biraz göz gezdirebilirsiniz.
+
+Şu siteler faydalı olabilir;
+
+http://www.htmldersleri.org/index.php?getir=html_intro&ID=1
+
+http://www.htmldersleri.org/index.php?getir=html_links&ID=7
+
+http://www.htmldersleri.org/index.php?getir=html_attributes&ID=4
+
+http://www.htmldersleri.org/index.php?getir=html_tables&ID=9
+
+Güzel ! Her şey tamamlandığına göre dersimize başlayabiliriz.
+
+Kodlarımızı bilgisayarımızda çalıştıracağız.
+
+Web Sayfası Kaynağını Alma
+import requests 
+from bs4 import BeautifulSoup
+
+url =  "https://yellowpages.com.tr/ara?q=Ankara" # Site linkimiz 
+
+response =  requests.get(url) # Web sayfamızı çekiyoruz.
+
+html_icerigi = response.content  # Web sayfamızın içeriğini alıyoruz.
+
+soup =  BeautifulSoup(html_icerigi,"html.parser") # Web sayfamızı parçalamak için BeautifulSoup objesine atıyoruz.
+
+
+print(soup.prettify()) # Daha güzel bir görüntü için prettify() fonksiyonunu kullanıyoruz.
+Web Sayfasındaki < a > etiketlerini alma
+import requests 
+from bs4 import BeautifulSoup
+
+url =  "https://yellowpages.com.tr/ara?q=Ankara" # Site linkimiz 
+
+response =  requests.get(url) # Web sayfamızı çekiyoruz.
+
+html_icerigi = response.content  # Web sayfamızın içeriğini alıyoruz.
+
+soup =  BeautifulSoup(html_icerigi,"html.parser") # Web sayfamızı parçalamak için BeautifulSoup objesine atıyoruz.
+
+
+print(soup.find_all("a")) # Bize tüm <a> etiketlerini liste şeklinde dönüyor.
+< a > etiketlerinin içindeki "href" değerlerini alma
+import requests 
+from bs4 import BeautifulSoup
+
+url =  "https://yellowpages.com.tr/ara?q=Ankara" # Site linkimiz 
+
+response =  requests.get(url) # Web sayfamızı çekiyoruz.
+
+html_icerigi = response.content  # Web sayfamızın içeriğini alıyoruz.
+
+soup =  BeautifulSoup(html_icerigi,"html.parser") # Web sayfamızı parçalamak için BeautifulSoup objesine atıyoruz.
+
+
+for i in soup.find_all("a"):
+    print(i.get("href"))
+< a > etiketlerinin içindeki yazı değerlerini alma
+import requests 
+from bs4 import BeautifulSoup
+
+url =  "https://yellowpages.com.tr/ara?q=Ankara" # Site linkimiz 
+
+response =  requests.get(url) # Web sayfamızı çekiyoruz.
+
+html_icerigi = response.content  # Web sayfamızın içeriğini alıyoruz.
+
+soup =  BeautifulSoup(html_icerigi,"html.parser") # Web sayfamızı parçalamak için BeautifulSoup objesine atıyoruz.
+
+
+for i in soup.find_all("a"):
+    print(i.text)
+class değerleri "yp-poi-box-2" olan < div > etiketlerini alma
+import requests 
+from bs4 import BeautifulSoup
+
+url =  "https://yellowpages.com.tr/ara?q=Ankara" # Site linkimiz 
+
+response =  requests.get(url) # Web sayfamızı çekiyoruz.
+
+html_icerigi = response.content  # Web sayfamızın içeriğini alıyoruz.
+
+soup =  BeautifulSoup(html_icerigi,"html.parser") # Web sayfamızı parçalamak için BeautifulSoup objesine atıyoruz.
+
+ # Bu kullanımın anlamı div etiketlerinden class'ı yp-poi-box-2 yi al anlamına geliyor.
+for i in soup.find_all("div",{"class":"yp-poi-box-2"}):
+    print(i)
+İşte bu kadar ! Bir sonraki derste IMDB Top 250 projemizi yazmaya başlayacağız.
