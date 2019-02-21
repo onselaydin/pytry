@@ -9,6 +9,7 @@ def Pencere():
     pencere.setWindowTitle("Test deneme kontrol başlık")
     pencere.show()
 
-    sys.exit(app.exec_())
+    #sys.exit(app.exec_())
+    app.exec_()
 
 Pencere()

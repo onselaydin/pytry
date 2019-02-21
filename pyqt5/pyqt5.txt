@@ -33,3 +33,11 @@ Tutorials Point : https://www.tutorialspoint.com/pyqt/pyqt_tutorial.pdf
 Her türlü sorunuz için bana ulaşabilirsiniz :)
 
 Buradan itibaren artık PyQt5 notebook'u paylaşmayacağım. Sadece derslerde kullandığımız kodları paylaşacağım.
+
+Arkadaşlar Python'ın üst sürümlerinde QtDesigner PyQt5 klasörünün altında bulunmuyor. Bir sonraki derste göreceğimiz QtDesigner'ı aşağıdaki yöntemle açabilirsiniz.
+
+1. Terminal (CMD) açın.
+
+2.  designer komutunu girin ve enter'a basın.
+
+Bu işlemlerden sonra QtDesigner birkaç saniye sonra açılacaktır.
