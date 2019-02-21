@@ -1,0 +1,35 @@
+PyQt5 Kurulumu
+Bu bölümle birlikte artık PyQt5 arayüz geliştirme işlemlerimize başlıyoruz. PyQt5 çok kapsamlı modüllerden oluştuğu için bu bölümde sadece temel bilgilerimizi alacağız ve proje olarak 2 tane arayüz geliştireceğiz.
+
+PyQt5 , Python ile hazır olarak gelmediği için bunu ilk olarak kurmamız gerekiyor.
+
+Linux Dağıtımlar İçin Kurulum
+        1. Terminali açıyoruz. 
+        2. İlk olarak şu komutu çalıştırıyoruz. "sudo apt-get install python3-pyqt5"
+        3. Daha sonra şu komutu çalıştırıyoruz. "sudo apt-get install python3-pyqt5.qtsql"
+        4. En son şu komutu çalıştırıyoruz. "sudo apt-get install qttools5-dev-tools"
+
+Windows İşletim Sistemi İçin Kurulum
+1.İlk olarak şu linke gidiyoruz. https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.6/
+
+2.Buradan 32 bit .exe dosyasını indiriyoruz.
+
+3.İndirdiğimiz dosyayı çalıştırdığımızda bilgisayarımız bunu PyQt5 olarak C:\Python35\Lib\site-packages altına yükleyecek.
+
+4.Artık PyQt5 ile arayüz geliştirebiliriz.
+
+PyQt5' e nasıl çalışmalıyız ?
+Şimdi burada yapmam gereken birkaç uyarı var. Öncelikle PyQt5 çok kapsamlı modüllerden oluştuğu için sadece en gerekli temel bilgileri ve arayüz geliştirmenin temel mantığını öğretmeye çalışacağım. Bu sebeple, her sınıfı , her fonksiyonu ezberlemeye çalışmak pek akılcı olmayacaktır. Ayrıca derslerden bağımsız her dersin sonunda mutlaka öğrendiklerimizle ilgili alıştırma yapmalısınız. Aceleci davranırsanız maalesef mantığını öğrenemezsiniz. Ancak eğer Arayüz Geliştirme mantığını kavrarsanız başka bir programlama dilinde Arayüz Geliştirme mantığına direk aşina olmuş olacaksınız.
+
+Yararlı Kaynaklar
+PyQt5 ile ilgili yararlı kaynaklar;
+
+PyQt5 Dokümantasyon : http://pyqt.sourceforge.net/Docs/PyQt5/class_reference.html
+
+ZetCode Tutorial : http://zetcode.com/gui/pyqt5/
+
+Tutorials Point : https://www.tutorialspoint.com/pyqt/pyqt_tutorial.pdf
+
+Her türlü sorunuz için bana ulaşabilirsiniz :)
+
+Buradan itibaren artık PyQt5 notebook'u paylaşmayacağım. Sadece derslerde kullandığımız kodları paylaşacağım.

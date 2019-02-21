@@ -1,0 +1,18 @@
+Pillow Modülü ile Fotoğraf İşlemleri
+Bu derste Pillow kullanarak fotoğraf ve resim işlemlerini gerçekleştireceğiz. Bunun için ilk olarak Pillow'u internet üzerinden indirelim.
+
+Windows Üzerinde Kurulum¶
+Bu komutu cmd üzerinde çalıştırırsak Pillow modülü sistemimize kurulacaktır.
+
+pip3 install Pillow
+
+Ubuntu Üzerinde Kurulum
+Bu komutu terminal üzerinde çalıştırırsak Pillow modülü sistemimize kurulacaktır.
+
+pip3 install Pillow
+
+Pillow , çok kapsamlı modüllerden oluştuğu için burada sadece belli fonksiyonlarını göstermeye çalışacağım. Ancak siz Pillow'u incelemek isterseniz resmi dokümantasyonuna bakabilirsiniz.
+
+https://pillow.readthedocs.io/en/4.2.x/handbook/tutorial.html
+
+Şimdi dersimize geçelim ve Pillow'u kullanmaya çalışalım.

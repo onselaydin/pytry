@@ -20,3 +20,4 @@ print((secondValue / firstValue) * amount)
 
 
 
+##https://www.dr.com.tr/Kategori_/Kitap/En-Yeniler/10001/3
