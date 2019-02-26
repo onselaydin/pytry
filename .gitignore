@@ -99,7 +99,6 @@ venv.bak/
 
 # mkdocs documentation
 /site
-/okipu
 
 # mypy
 .mypy_cache/
