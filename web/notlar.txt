@@ -1,0 +1,5 @@
+http://flask.pocoo.org/
+
+pip install flask
+http://localhost:5000 den nodejs gibi yada asp.net in sunucusu gibi.
+
