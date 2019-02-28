@@ -11,9 +11,11 @@ def clear(text):
     "<p style=""margin - left:0in; margin - right:0in"">": "", "<em>": "", "</em>": "", "<p style=""margin - left:36.0pt"">": "",
     "<div style=\"margin - top:10px\">": "", "<li>": "", "</li>": ""
     }
+    t=""
     for i,j in donustur.items():
         a = text.find(i, 0, len(text))
         if a != -1:
-            return text.replace(i,j)
+            t= text.replace(i,j)
         else:
-            return text
+            t=text
+    return t
