@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h3>ONSEL.NET</h3>
+    <p>Bu Blog yazılım geliştiricilere itafen yapılmıştır.</p>
+</div>
+{% if answer == "evet" %}
+<p>Cevap evetmiş</p>
+{% else %}
+<p>cevap hayır</p>
+{% endif %}
+
+<ul>
+{% for num in numbers %}
+    <li>{{ num }}
+{% endfor %}
+</ul>
+
+
+{% endblock body %}

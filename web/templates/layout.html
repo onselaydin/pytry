@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>
+        {% block title %}
+        
+        {% endblock  %}
+    </title>
 </head>
 <body>
-    <h3>test deneme kontrol</h3>
+    <h3>layout</h3>
+       {% block  test %}
+       <p>burasında layout</p>
+        {% endblock  %} 
 </body>
 </html>
