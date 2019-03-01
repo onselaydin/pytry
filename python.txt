@@ -147,3 +147,6 @@ CREATE TABLE IF NOT EXISTS users (
 
 http dos ile ilgili bir makale
 https://www.mertsarica.com/dos-ile-mucadele/
+
+mysql> set profiling=1;
+mysql> show profiles;
