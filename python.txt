@@ -112,7 +112,7 @@ https://paste.ubuntu.com/p/tBzGPPkPwr/?fbclid=IwAR1BGLIgiSCOJS1-8s88x9Kv8xP1o8EW
 Ödev
 https://nbviewer.jupyter.org/github/mustafamuratcoskun/Sifirdan-Ileri-Seviyeye-Python-Programlama/blob/master/Mod%C3%BCller/Programlama%20%C3%96devi%20%20-%20%20Mod%C3%BCller.ipynb
 
-104.248.188.200
+ssh root@104.248.188.200
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-remote-database-to-optimize-site-performance-with-mysql-on-ubuntu-16-04#step-2-%E2%80%94-configuring-mysql-to-listen-for-remote-connections
 http://www.mysqltutorial.org/mysql-create-table/
 https://flask-mysql.readthedocs.io/en/latest/
@@ -144,3 +144,6 @@ CREATE TABLE IF NOT EXISTS users (
     password TEXT,
     PRIMARY KEY (id)
 )  ENGINE=INNODB;
+
+http dos ile ilgili bir makale
+https://www.mertsarica.com/dos-ile-mucadele/
