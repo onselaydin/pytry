@@ -5,9 +5,9 @@ from passlib.hash import sha256_crypt
 
 #Kullanıcı Kayıt Formu
 class RegisterForm(Form):
-    name = StringField("isim soyisim",validators=[validators.length(min=4,max=50),validators.DataRequired])
-    email = StringField("eposta",validators=[validators.Email(message="Mail adresi hatalı...")])
-    username = StringField("kullanıcı adı",validators=[validators.length(min=4,max=50),validators.DataRequired])
+    name = StringField("isim soyisim", [validators.length(min=4,max=50)])
+    email = StringField("eposta")
+    username = StringField("kullanıcı adı")
     password = PasswordField("Parola",validators=[
         validators.DataRequired(message="Parola giriniz"),
         validators.EqualTo(fieldname = "confirm", message="Parola uyuşmuyor.")
@@ -16,12 +16,12 @@ class RegisterForm(Form):
 
 app = Flask(__name__)
 
-app.config["MYSQL_HOST"] = "104.248.188.200"
-app.config["MYSQL_PORT"] = "3306"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "Onsel123"
-app.config["MYSQL_DB"] = "OnBlog"
-app.config["MYSQL_CURSORCLASS"] = "DictCursor"
+app.config['MYSQL_HOST'] = '104.248.188.200'
+app.config['MYSQL_PORT'] = 3306
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'Onsel123_'
+app.config['MYSQL_DB'] = 'OnBlog'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
@@ -42,13 +42,13 @@ def detail(id):
 @app.route("/register", methods = ["GET", "POST"])
 def register():
     form = RegisterForm(request.form)
-    if request.method == "POST":
+    if request.method == "POST" and form.validate():
         name = form.name.data
         email = form.email.data
         username = form.username.data
         password = sha256_crypt.encrypt(form.password.data)
         cursor = mysql.connect.cursor()
-        sorgu = "Insert into users(name, email, username, password) VALUES (%s, %s, %s, %s)"
+        sorgu = "insert into users(name, email, username, password) VALUES (%s, %s, %s, %s)"
         cursor.execute(sorgu,(name, email, username, password))
         mysql.connection.commit()
         cursor.close()

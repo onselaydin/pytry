@@ -150,3 +150,11 @@ https://www.mertsarica.com/dos-ile-mucadele/
 
 mysql> set profiling=1;
 mysql> show profiles;
+
+digitalocean aşağıdaki şekilde çözdüm.
+sudo ps wwaux | grep -i sql
+sudo service mysql restart
+sudo netstat -plutn | grep -i sql
+GRANT ALL ON OnBlog.* TO root@78.190.132.101 IDENTIFIED BY 'Onsel123_'; 
+requiresecuretransport = on
+https://www.digitalocean.com/community/questions/warning-mysqli_real_connect-hy000-3159-connections-using-insecure-transport-are-prohibited-while-require_secure_transport-on
