@@ -16,12 +16,12 @@ class RegisterForm(Form):
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = '104.248.188.200'
-app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Onsel123_'
-app.config['MYSQL_DB'] = 'OnBlog'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config["MYSQL_HOST"] = "104.248.188.200"
+#app.config["MYSQL_DATABASE_PORT"] = "3306"
+app.config["MYSQL_USER"] = "root"
+app.config["MYSQL_PASSWORD"] = "Onsel123_"
+app.config["MYSQL_DB"] = "OnBlog"
+app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
 mysql = MySQL(app)
 
@@ -48,9 +48,14 @@ def register():
         username = form.username.data
         password = sha256_crypt.encrypt(form.password.data)
         cursor = mysql.connect.cursor()
-        sorgu = "insert into users(name, email, username, password) VALUES (%s, %s, %s, %s)"
-        cursor.execute(sorgu,(name, email, username, password))
+        #sorgu = "INSERT INTO users(name, email, username, password) VALUES (%s, %s, %s, %s)"
+        sorgu = "INSERT INTO users(name, email, username, password) VALUES ('yagmur aydin','yagmuraydin@gmail.com','yagmur','1234')"
+        #cursor.execute(sorgu,(name, email, username, password))
+  
+        cursor.execute(sorgu)
         mysql.connection.commit()
+    
+        mysql.connect.rollback()
         cursor.close()
 
         return redirect(url_for("index"))
