@@ -1,0 +1,53 @@
+sudo -i -u postgres -- usera geçiş
+sudo -u postgres psql -- direk çalıştırmak
+
+# \q -- çıkış
+
+-- servis durumu
+systemctl status postgresql
+
+
+createdb YeniVeriTabani  -- yeni db oluşturmak
+
+# \conninfo -- bağlantı bilgisi
+
+Tablo oluşturmak
+CREATE TABLE ulkeler (
+ ulke_id serial PRIMARY KEY,
+ ulke_adi varchar (25) NOT NULL,
+ dil varchar (50) NOT NULL,
+ nufus varchar (25) NOT NULL,
+ lokasyon varchar(25) check (location in ('asya', 'avrupa', 'kuzeyamerika', 'guneyamerika', 'afrika', 'avustralya', 'antartika')),
+ kurulus_tarihi date
+ );
+
+ # \d  -- tabloları görmek
+
+ # \dt  -- sequens görmeden tabloları görmek
+
+ sudo -u postgres createuser --interactive   ---- yeni kullanıcı eklemek
+
+
+ ----remove postgres
+
+ sudo apt-get --purge remove postgresql
+ sudo apt-get --purge remove postgresql postgresql-doc postgresql-common
+
+ sudo su -               ----- root kullanıcısına geçmek
+
+ ---postgres parolasını resetlemek
+ sudo -u postgres psql
+ ALTER USER postgres PASSWORD 'newpassword';
+ yada
+ 
+ psql postgres
+ postgres=# \password postgres
+
+
+:/etc/postgresql/11/main# nano postgresql.conf
+listen_addresses='*' yada serverın ipsi
+
+bağlanmak
+psql -h hostname -U username -d database
+
+
