@@ -160,3 +160,7 @@ requiresecuretransport = on
 https://www.digitalocean.com/community/questions/warning-mysqli_real_connect-hy000-3159-connections-using-insecure-transport-are-prohibited-while-require_secure_transport-on
 
 insert into users(name, email, username, password) VALUES ("Onsel AYDIN","onselaydin@gmail.com", "oncell", "1234")
+
+---flask flashing
+http://flask.pocoo.org/docs/0.12/patterns/flashing/
+

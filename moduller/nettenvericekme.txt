@@ -115,3 +115,8 @@ soup =  BeautifulSoup(html_icerigi,"html.parser") # Web sayfamızı parçalamak 
 for i in soup.find_all("div",{"class":"yp-poi-box-2"}):
     print(i)
 İşte bu kadar ! Bir sonraki derste IMDB Top 250 projemizi yazmaya başlayacağız.
+
+download
+https://stackabuse.com/download-files-with-python/
+https://stackoverflow.com/questions/5137497/find-current-directory-and-files-directory
+https://stackoverflow.com/questions/12613797/python-script-uploading-files-via-ftp
