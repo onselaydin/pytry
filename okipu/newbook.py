@@ -30,7 +30,7 @@ def GetBookData():
         writer = soup.find_all("span",{"itemprop":'name'})[0].text.strip()
         comment = soup.find_all("span",{"itemprop":"description"})[0].text
         publisher = soup.find_all("span",{"itemprop":"name"})[1].text.strip()
-        category = soup.find_all("div",{"class":"grid_6 omega alpha section"})[1].text.strip() #Buradan devam et.....
+        category = soup.find_all("div",{"class":"grid_6 omega alpha section"})[1].text.lstrip("İlgili Kategoriler:\nKitap »").split()[0] #Buradan devam et.....»
         details = soup.find_all("table",{"class":"attribute"})
         for td in details:
             say = td.find_all("td")
@@ -57,6 +57,7 @@ def GetBookData():
                 pages = say[13].text.replace("\n","").strip()
                 hardcover = say[15].text.replace("\n","").strip()
                 papertype = say[17].text.replace("\n","").strip()
+
         picture = isbn+".jpg"
         dir_path = os.path.dirname(os.path.realpath(__file__))
         piclink = soup.find_all("div",{"class":"image"})
@@ -81,7 +82,15 @@ def GetBookData():
         repeated = cursor.fetchall()
         
         if len(repeated) == 0:
-            cursor.execute("INSERT INTO BOOKS (Title,Writer,Translator,Publisher,Comment,Language,Isbn,BookEdition,NumberofPages,HardcoverType,PaperType,\
-            ProductDimensions)")
+
+            cursor.execute("SELECT * FROM BOOK_CATEGORIES WHERE CategoryName=?",(category))
+            category = cursor.fetchone()
+            if category[0] == None:
+                category = 25
+
+
+
+            #cursor.execute("INSERT INTO BOOKS (Title,Writer,Translator,Publisher,Comment,Language,Isbn,BookEdition,NumberofPages,HardcoverType,PaperType,\
+            #ProductDimensions)")
 
 GetBookData()
