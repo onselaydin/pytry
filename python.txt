@@ -164,3 +164,9 @@ insert into users(name, email, username, password) VALUES ("Onsel AYDIN","onsela
 ---flask flashing
 http://flask.pocoo.org/docs/0.12/patterns/flashing/
 
+
+CK Editoru
+https://cdn.ckeditor.com/
+
+flask ORM için SqlAlchemy
+http://flask-sqlalchemy.pocoo.org/2.3/

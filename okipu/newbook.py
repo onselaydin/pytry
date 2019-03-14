@@ -6,8 +6,10 @@ from time import sleep
 import pyodbc
 import urllib.request
 import os
+import glob
 import ftplib
 import pyodbc
+import re #regex kütüphanesi
 
 def GetNewBookLinks():
     url = "https://www.kitapyurdu.com/yeni-cikan-kitaplar/haftalik/2.html"
@@ -21,7 +23,9 @@ def GetNewBookLinks():
     return links
 
 def GetBookData():
-    title,writer,translator,publisher,comment,language,isbn,version,hardcover,papertype,picture,category,pages="","","","","","","","","","","","",""
+    sleep(5)
+    now = datetime.datetime.now()
+    title,writer,translator,publisher,comment,language,isbn,version,hardcover,papertype,picture,category,pages,dimension="","","","","","","","","","","","","",""
     for book in GetNewBookLinks():
         response = requests.get(book)
         content = response.content
@@ -31,6 +35,9 @@ def GetBookData():
         comment = soup.find_all("span",{"itemprop":"description"})[0].text
         publisher = soup.find_all("span",{"itemprop":"name"})[1].text.strip()
         category = soup.find_all("div",{"class":"grid_6 omega alpha section"})[1].text.lstrip("İlgili Kategoriler:\nKitap »").split()[0] #Buradan devam et.....»
+        
+        
+       
         details = soup.find_all("table",{"class":"attribute"})
         for td in details:
             say = td.find_all("td")
@@ -42,6 +49,7 @@ def GetBookData():
                 pages = say[11].text.replace("\n","").strip()
                 hardcover = say[13].text.replace("\n","").strip()
                 papertype = say[15].text.replace("\n","").strip()
+                dimension = say[16].text.replace("\n","").strip()
             elif len(say) == 16:
                 isbn = say[3].text.replace("\n","").strip()
                 version = say[5].text.replace("\n","").strip()
@@ -49,6 +57,7 @@ def GetBookData():
                 pages = say[9].text.replace("\n","").strip()
                 hardcover = say[11].text.replace("\n","").strip()
                 papertype = say[14].text.replace("\n","").strip()
+                dimension = say[15].text.replace("\n","").strip()
             if len(say) == 20:
                 translator = say[1].text.replace("\n","").strip()
                 isbn = say[7].text.replace("\n","").strip()
@@ -56,7 +65,7 @@ def GetBookData():
                 language = say[11].text.replace("\n","").strip()
                 pages = say[13].text.replace("\n","").strip()
                 hardcover = say[15].text.replace("\n","").strip()
-                papertype = say[17].text.replace("\n","").strip()
+                papertype = say[18].text.replace("\n","").strip()
 
         picture = isbn+".jpg"
         dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -64,17 +73,18 @@ def GetBookData():
         for plink in piclink:
             piclink = plink.find("a")["href"]
 
-        """
+    
         filename = dir_path+"\\"+ picture
         urllib.request.urlretrieve(piclink, filename)
         
         
-        session = ftplib.FTP('ftp://37.230.108.55/httpdocs/cache/','okipunet','zP1*S6po')
-        file = open(filename,'rb')
-        session.storbinary('STOR '+filename, file)
+        session = ftplib.FTP("37.230.108.55","okipunet","zP1*S6po")
+        session.cwd("/httpdocs/cache/")
+        file = open(filename,"rb")
+        session.storbinary("STOR " + picture, file)
         file.close()
         session.quit()
-        """
+
         conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
         #conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
         cursor = conn.cursor()
@@ -82,15 +92,23 @@ def GetBookData():
         repeated = cursor.fetchall()
         
         if len(repeated) == 0:
-
-            cursor.execute("SELECT * FROM BOOK_CATEGORIES WHERE CategoryName=?",(category))
+            cursor.execute("SELECT Id FROM BOOK_CATEGORIES WHERE CategoryName=?",(category))
             category = cursor.fetchone()
-            if category[0] == None:
+            if category is None:
                 category = 25
+            else:
+                category = category.Id
 
+            version = re.findall("[0-9]", version)
 
+            cursor.execute("INSERT INTO BOOKS (Title,Writer,Translator,Publisher,Comment,Language,Isbn,BookEdition,NumberofPages,HardcoverType,PaperType,\
+            ProductDimensions,BookCategory,KucukResimYol,BuyukResimYol,IsActive,Update_Date,Company) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            (title,writer,translator,publisher,comment,language,isbn,version[0],pages,hardcover,papertype,dimension,category,picture,picture,True,now,"KITAPYURDU"))
+            conn.commit()
+            conn.close()
 
-            #cursor.execute("INSERT INTO BOOKS (Title,Writer,Translator,Publisher,Comment,Language,Isbn,BookEdition,NumberofPages,HardcoverType,PaperType,\
-            #ProductDimensions)")
+        for f in glob.glob("*.jpg"):
+            os.remove(f)
+        
 
 GetBookData()
