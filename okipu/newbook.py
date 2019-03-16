@@ -30,7 +30,11 @@ def GetBookData():
             response = requests.get(book)
             content = response.content
             soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
-            title = soup.find_all("h1",{"class":"product-heading"})[0].text.strip()
+
+            if soup.find_all("h1",{"class":"product-heading"}) is not None and len(soup.find_all("h1",{"class":"product-heading"}))>0
+                title = soup.find_all("h1",{"class":"product-heading"})[0].text.strip()
+            else:
+                title = ""            
             writer = soup.find_all("span",{"itemprop":'name'})[0].text.strip()
             comment = soup.find_all("span",{"itemprop":"description"})[0].text
 
@@ -92,8 +96,8 @@ def GetBookData():
             file.close()
             session.quit()
             try:
-                conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
-                #conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
+                #conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
+                conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
                 cursor = conn.cursor()
                 cursor.execute("select Id, Title, Writer, Translator, Isbn, Comment from BOOKS where Title=? or Isbn=?", (title, isbn))
                 repeated = cursor.fetchall()
