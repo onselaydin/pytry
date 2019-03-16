@@ -31,7 +31,7 @@ def GetBookData():
             content = response.content
             soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
 
-            if soup.find_all("h1",{"class":"product-heading"}) is not None and len(soup.find_all("h1",{"class":"product-heading"}))>0
+            if soup.find_all("h1",{"class":"product-heading"}) is not None and len(soup.find_all("h1",{"class":"product-heading"}))>0:
                 title = soup.find_all("h1",{"class":"product-heading"})[0].text.strip()
             else:
                 title = ""            
