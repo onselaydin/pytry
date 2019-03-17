@@ -1,0 +1,20 @@
+https://landscape.cncf.io/zoom=80
+https://github.com/BretFisher/udemy-docker-mastery
+
+http://chat.dockermastery.com/
+
+dockermastery.slack.com
+https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg
+
+https://github.com/matt9ucci/DockerCompletion
+
+Using Prune to Keep Your Docker System Clean (YouTube)
+https://www.udemy.com/docker-mastery/learn/v4/t/lecture/7407918?start=0
+
+apt-get install docker.io
+
+https://hub.docker.com/editions/community/docker-ce-server-ubuntu
+
+curl -sSL https://get.docker.com/ | sh
+
+https://hub.docker.com/

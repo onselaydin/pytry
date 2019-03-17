@@ -27,6 +27,7 @@ def GetBookData():
     title,writer,translator,publisher,comment,language,isbn,version,hardcover,papertype,picture,category,pages,dimension="","","","","","","","","","","","","",""
     for x in range(1,26):    
         for book in GetNewBookLinks(x):
+            sleep(30)
             response = requests.get(book)
             content = response.content
             soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
@@ -88,16 +89,19 @@ def GetBookData():
             filename = dir_path+"\\"+ picture
             urllib.request.urlretrieve(piclink, filename)
             
-            
-            session = ftplib.FTP("37.230.108.55","okipunet","zP1*S6po")
-            session.cwd("/httpdocs/cache/")
-            file = open(filename,"rb")
-            session.storbinary("STOR " + picture, file)
-            file.close()
-            session.quit()
             try:
-                #conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
-                conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
+                session = ftplib.FTP("37.230.108.55","okipunet","zP1*S6po")
+                session.cwd("/httpdocs/cache/")
+                file = open(filename,"rb")
+                session.storbinary("STOR " + picture, file)
+                file.close()
+                session.quit()
+            except:
+                print("ftp error...")
+           
+            try:
+                conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
+                #conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
                 cursor = conn.cursor()
                 cursor.execute("select Id, Title, Writer, Translator, Isbn, Comment from BOOKS where Title=? or Isbn=?", (title, isbn))
                 repeated = cursor.fetchall()
@@ -120,7 +124,7 @@ def GetBookData():
                     conn.close()
                     print(str(isbn) + " Aktarıldı...")
             except:
-               print("dbde hata olştu")
+               print("db error...")
 
             for f in glob.glob(dir_path+"\\*.jpg"):
                 os.remove(f)
