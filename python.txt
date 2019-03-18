@@ -184,3 +184,6 @@ http://localhost:8000 projeyi test etmek için kullanılır.
 >python manage.py startapp article
 --özelleştirme dökümanı
 https://docs.djangoproject.com/en/2.0/ref/contrib/admin/
+
+
+https://nathanhoad.net/how-to-git-cancel-merge/
