@@ -170,3 +170,17 @@ https://cdn.ckeditor.com/
 
 flask ORM için SqlAlchemy
 http://flask-sqlalchemy.pocoo.org/2.3/
+
+
+https://www.djangoproject.com/
+
+pip install django==2.0.3 -- istenilen versiyonda paket kurmak.
+>django-admin --version djangonun sürümü
+
+--proje oluşturmak (örnek: blog)
+proje klasörüne git ve > django-admin startproject blog
+http://localhost:8000 projeyi test etmek için kullanılır.
+--Bu uygulamanın alt uygulamasını açmak için 
+>python manage.py startapp article
+--özelleştirme dökümanı
+https://docs.djangoproject.com/en/2.0/ref/contrib/admin/

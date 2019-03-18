@@ -28,9 +28,13 @@ def GetBookData():
     for x in range(1,26):    
         for book in GetNewBookLinks(x):
             sleep(30)
-            response = requests.get(book)
-            content = response.content
-            soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
+            try:
+                response = requests.get(book)
+                content = response.content
+                soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
+            except:
+                print("Connection problem")
+            
 
             if soup.find_all("h1",{"class":"product-heading"}) is not None and len(soup.find_all("h1",{"class":"product-heading"}))>0:
                 title = soup.find_all("h1",{"class":"product-heading"})[0].text.strip()
@@ -85,9 +89,15 @@ def GetBookData():
             for plink in piclink:
                 piclink = plink.find("a")["href"]
 
-        
-            filename = dir_path+"\\"+ picture
-            urllib.request.urlretrieve(piclink, filename)
+            try:
+                filename = dir_path+"\\"+ picture
+                urllib.request.urlretrieve(piclink, filename)
+            except:
+                print("picture link not read...")
+            finally:
+                filename = dir_path+"\\"+ picture
+                urllib.request.urlretrieve(piclink, filename)
+            
             
             try:
                 session = ftplib.FTP("37.230.108.55","okipunet","zP1*S6po")

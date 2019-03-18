@@ -1,0 +1,2 @@
+face wifi
+apt-get install mana-toolkit
