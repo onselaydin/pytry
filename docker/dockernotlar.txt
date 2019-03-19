@@ -18,3 +18,29 @@ https://hub.docker.com/editions/community/docker-ce-server-ubuntu
 curl -sSL https://get.docker.com/ | sh
 
 https://hub.docker.com/
+
+# docker info
+# docker version
+
+https://hub.docker.com/editions/community/docker-ce-desktop-windows
+https://desktop.github.com/
+https://github.com/BretFisher/udemy-docker-mastery
+https://code.visualstudio.com/
+https://cmder.net/
+https://docs.docker.com/docker-for-windows/faqs/
+win7,8,10 home https://docs.docker.com/toolbox/overview/
+
+# docker
+# docker pause
+# curl -fsSL get.docker.com -o get-docker.sh
+
+# docker image ls -- 
+
+https://www.bretfisher.com/shell/
+
+https://atom.io/
+
+https://spacevim.org/
+
+
+# docker top mongo

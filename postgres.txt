@@ -50,4 +50,38 @@ listen_addresses='*' yada serverın ipsi
 bağlanmak
 psql -h hostname -U username -d database
 
+uninstall remove
+https://askubuntu.com/questions/32730/how-to-remove-postgres-from-my-installation
 
+--userlistesi
+# awk -F':' '{ print $1}' /etc/passwd
+
+ssh root@104.248.188.200
+
+sudo -u postgres psql
+
+sudo -u postgres createuser --interactive
+ecommrole
+
+sudo -u postgres createdb ecommrole
+
+sudo adduser ecommrole
+pass : Ecommrole123
+
+sudo -i -u ecommrole
+
+psql -d ecommrole
+
+https://stackoverflow.com/questions/32439167/psql-could-not-connect-to-server-connection-refused-error-when-connecting-to
+
+ALTER USER ecommrole PASSWORD 'Ecommrole123';
+https://stackoverflow.com/questions/7695962/postgresql-password-authentication-failed-for-user-postgres
+
+
+kurulum
+https://aligoren.com/ubuntu-uzerine-postgresql-kurulumu/
+
+https://vexxhost.com/resources/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-16-04/
+
+
+https://help.ubuntu.com/lts/serverguide/firewall.html.tr
