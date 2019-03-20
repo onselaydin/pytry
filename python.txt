@@ -187,3 +187,5 @@ https://docs.djangoproject.com/en/2.0/ref/contrib/admin/
 
 
 https://nathanhoad.net/how-to-git-cancel-merge/
+
+http://www.pythondersleri.com/2013/04/python-ile-network-oyunu.html
