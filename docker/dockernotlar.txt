@@ -44,3 +44,13 @@ https://spacevim.org/
 
 
 # docker top mongo
+
+windows contanier
+https://www.youtube.com/watch?v=066-9yw8-7c
+
+windows and linux 
+https://www.youtube.com/watch?v=4ZY_4OeyJsw
+
+https://www.youtube.com/watch?v=QASAqcuuzgI
+
+# docker container stats
