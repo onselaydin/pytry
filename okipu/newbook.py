@@ -27,7 +27,7 @@ def GetBookData():
     title,writer,translator,publisher,comment,language,isbn,version,hardcover,papertype,picture,category,pages,dimension="","","","","","","","","","","","","",""
     for x in range(1,26):    
         for book in GetNewBookLinks(x):
-            sleep(30)
+            sleep(5)
             try:
                 response = requests.get(book)
                 content = response.content
