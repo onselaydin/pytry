@@ -1,0 +1,19 @@
+https://selenium-python.readthedocs.io/
+
+drivers
+https://selenium-python.readthedocs.io/installation.html#drivers
+
+
+navigating
+https://selenium-python.readthedocs.io/navigating.html
+
+
+xpath
+https://www.w3schools.com/xml/xpath_intro.asp
+
+chromeda xpath almak için
+elemente sağ click + copy + copy xpath
+
+//*   bizim web sitemizi temsil eder..
+
+//*[@id="entry-item-list"]

@@ -11,6 +11,7 @@ import ftplib
 import re #regex kutuphanesi
 
 def GetNewBookLinks(page):
+    #https://canyayinlari.com/kitaplar/?SayfaNo=1
     #url = "https://www.kitapyurdu.com/yeni-cikan-kitaplar/haftalik/2.html"
     url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
     response = requests.get(url)

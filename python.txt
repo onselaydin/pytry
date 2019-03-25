@@ -187,3 +187,19 @@ https://docs.djangoproject.com/en/2.0/ref/contrib/admin/
 
 
 https://nathanhoad.net/how-to-git-cancel-merge/
+
+Html içinde kod renklendirmek
+https://github.com/google/code-prettify
+
+jango filtreleri
+https://docs.djangoproject.com/en/2.0/ref/templates/builtins/
+
+order,filter vs...
+https://docs.djangoproject.com/en/2.0/ref/models/options/
+
+deploy django
+# rm -rf klasor
+
+https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+https://github.com/mustafamuratcoskun/django-blog-app
+
