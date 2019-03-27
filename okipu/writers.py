@@ -4,12 +4,13 @@ import re
 try:
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows con string
     cursor = conn.cursor()
-    cursor.execute("select Id, Writer from BOOKS")
+    cursor.execute("select Id, Writer from BOOKS order by Id DESC")
     books = cursor.fetchall()
 
     for book in books:
         id = book[0]
         writer = book[1]
+        print(str(id)+" bakılıyor")
         if writer.find(",") > -1:
             writer = writer.split(",")
             writer = writer[0].strip()

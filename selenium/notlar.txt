@@ -17,3 +17,5 @@ elemente sağ click + copy + copy xpath
 //*   bizim web sitemizi temsil eder..
 
 //*[@id="entry-item-list"]
+
+chrome konsolda $x(buraya xpath linkini yapıltır) enter yap. O elementten kaç adet var öğren.

@@ -188,7 +188,6 @@ https://docs.djangoproject.com/en/2.0/ref/contrib/admin/
 
 https://nathanhoad.net/how-to-git-cancel-merge/
 
-<<<<<<< HEAD
 Html içinde kod renklendirmek
 https://github.com/google/code-prettify
 
@@ -204,6 +203,3 @@ deploy django
 https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
 https://github.com/mustafamuratcoskun/django-blog-app
 
-=======
-http://www.pythondersleri.com/2013/04/python-ile-network-oyunu.html
->>>>>>> e8964914f5c5bfaf0426ea708221777bbe4a6cfb

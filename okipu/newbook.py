@@ -12,8 +12,8 @@ import re #regex kutuphanesi
 
 def GetNewBookLinks(page):
     #https://canyayinlari.com/kitaplar/?SayfaNo=1
-    #url = "https://www.kitapyurdu.com/yeni-cikan-kitaplar/haftalik/2.html"
-    url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
+    url = "https://www.kitapyurdu.com/index.php?route=product/category&path=128_139&filter_in_stock=1&page="+str(page)
+    #url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
     response = requests.get(url)
     html_icerigi = response.content
     soup = BeautifulSoup(html_icerigi.decode('utf-8', 'ignore'),"html.parser")
@@ -107,8 +107,8 @@ def GetBookData():
                 print("ftp error...")
            
             try:
-                #conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
-                conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
+                conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
+                #conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
                 cursor = conn.cursor()
                 cursor.execute("select Id, Title, Writer, Translator, Isbn, Comment from BOOKS where Title=? or Isbn=?", (title, isbn))
                 repeated = cursor.fetchall()
