@@ -12,7 +12,11 @@ import re #regex kutuphanesi
 
 def GetNewBookLinks(page):
     #https://canyayinlari.com/kitaplar/?SayfaNo=1
+<<<<<<< HEAD
     url = "https://www.kitapyurdu.com/index.php?route=product/category&path=128_159&filter_in_stock=1&page="+str(page)
+=======
+    url = "https://www.kitapyurdu.com/index.php?route=product/category&path=128_151&filter_in_stock=1&page="+str(page)
+>>>>>>> 9d16128b6170ffc66f8488967d614dad52a5377f
     #url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
     response = requests.get(url)
     html_icerigi = response.content
@@ -26,7 +30,7 @@ def GetNewBookLinks(page):
 def GetBookData():
     now = datetime.datetime.now()
     title,writer,translator,publisher,comment,language,isbn,version,hardcover,papertype,picture,category,pages,dimension="","","","","","","","","","","","","",""
-    for x in range(1,26):    
+    for x in range(1,49):   
         for book in GetNewBookLinks(x):
             sleep(5)
             try:
