@@ -44,6 +44,31 @@ msf> show options -- komutu ile eksik parametreleri gör
 msf> set RSHOST 10.0.2.5 --tekrar show options ile ayarlanmışmı gör.
 msf> exploit -- komutu ile çalıştırılır.
 
+-- metasploit communities ile açıklara bakmak...
+https://www.rapid7.com/products/metasploit/download/community/
+
+inject trojan for user
+https://github.com/Veil-Framework
+
+veil ile oluşturulan virusu test etmek için https://virusscan.jotti.org ama nodistribute bir site bul. jotti 
+dosyayı firmalara gönderiyor.
+
+
+install metasploit fw on ubuntu
+https://www.darkoperator.com/installing-metasploit-in-ubunt
+
+
+ubuntudaki msf console kullanıcı adı : onsel şifre: onsel123
+MSF web service username: onsel
+MSF web service password: onsel123
+MSF web service user API token: 6892fbbe664248422ef17d5e27b263332e64ef4ff9bd6864226fbaa415b464d42d11edd794110acf
+onsel@onsel-SL410:/opt/metasploit-framework$ msfconsole
+
+
+
+
+
+
 
 
 
