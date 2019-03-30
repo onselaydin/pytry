@@ -19,3 +19,31 @@ elemente sağ click + copy + copy xpath
 //*[@id="entry-item-list"]
 
 chrome konsolda $x(buraya xpath linkini yapıltır) enter yap. O elementten kaç adet var öğren.
+
+
+fixer.io apileri
+https://fixer.io/
+
+github rest api
+https://developer.github.com/v3/
+
+scrapy
+https://scrapy.org/
+kurulum için komut isteminden
+c:\>conda install -c conda-forge scrapy
+
+shell
+Önce anaconda prompt kurulu değilse kur ve aç.
+c:\> scrapy shell
+scrapy yi vs.code da kullanmak için
+c:\> pip install virtualenv
+
+vs.code içinde cmd de proje klasörümüzdeyken
+>activate c:\Users\onsel\anaconda3
+
+veri analizi
+http://nbviewer.jupyter.org/github/mustafamuratcoskun/Data-Analiz-Notebooklar/tree/master/
+
+numpy ve pandas gibi araçlar kullanılıyor
+Anaconda yüklüyse c:\> conda install numpy
+anaconda yüklü değilse c:\> pip install numpy

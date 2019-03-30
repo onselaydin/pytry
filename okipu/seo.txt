@@ -150,6 +150,37 @@ RewriteRule \.(gifjpgpng)$ - [F]
     - anahtar kelimeleri sayfalarda %1-3 arasında kullanılmalıdır.
     - anahtar kelime ölçümü (Anahtar kelime yoğunluğu = (anahtar kelime sayısı x Toplam kelime sayısı) / 100 )
     - anahtar kelime yoğunluğu ölçmek için site : http://tools.seobook.com/general/keyword-density
-    - 
-
+    - kelime bulma. otomatik tamamlama aracı...  
+        www.keywordtool.io
+        www.ubersuggest.io
+        www.wordtracker.com
+        trends.google.com
+        google.com/trends/correlate
+    - Anahtar Kelime Etkinliği Endexi Formülü    
+      AKEE = Aylık arama / (Aylık Arama / Rekabet Oranı)
+    - anahtar kelimelerimizi linklerimizde bulundurmalıyız.
+    - Domain adında anahtar kelimenin olması büyük bir avantajdır.
+    - Hiç bir web sitesi sosyal medyaya sırtını dönmemelidir.
+    - Google artık link çöplüğüne dönmüş sosyal imleme sitelerine artık tahammül edemiyor. 
+      En kalitelileri seçip az sayıda kullanmak daha iyidir.
+Soyal Medayada öne çıkmak için
+    - Paylaşımlar plan dahilinde aynı zaman dilimine yapılmalı.
+    - Paylaşımlarda kaliteli görsel kullanılmalı
+    - Metinler kitleye özgü samimi olmalı.
+    - Paylaşımlarda uygun simgeler kullanılmalı. Simge kullanan paylaşımlar %30 daha ilgi çekiyor.
+    - Paylaşımlara gelen yorunlara gecikmeden cevap verilmeli.
+    - Belli dönemlerde yarışmalar düzenlemek ve hediye vermek.
+    - Belli dönemlerde antek düzenlemek gerekli.
+    - facebook reklam maliyetleri diger ortamlara göre daha ucuzdur.
+    - facebook.com/business/products/ads/
+    - dünya twitter trandsmap ( www.trendsmap.com)
+    - işe yarayacak bi twitter aracıda https://tweetreach.com/
+    - facebook, twitter, linkedin, instagram, pinterest, reddit, tumblr, 
+    - google.com/analytics
+    - thinkwithgoogle.com  -- site hızı ölçümü
+    - google adwords - googleın reklamcılık hizmeti. Tıklama başına maliyeti var.
+    - sites.google.com
+    - business.google.com işletmemizin google haritalarında çıkması için
+    - webmaster araçları. - google.com/webmasters/tools/home?hl=tr
+    
 
