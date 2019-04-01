@@ -12,8 +12,8 @@ import re #regex kutuphanesi
 
 def GetNewBookLinks(page):
     #https://canyayinlari.com/kitaplar/?SayfaNo=1
-    url = "https://www.kitapyurdu.com/index.php?route=product/category&path=128_159&filter_in_stock=1&page="+str(page)
-    #url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
+    #url = "https://www.kitapyurdu.com/index.php?route=product/category&path=128_159&filter_in_stock=1&page="+str(page)
+    url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
     response = requests.get(url)
     html_icerigi = response.content
     soup = BeautifulSoup(html_icerigi.decode('utf-8', 'ignore'),"html.parser")
@@ -26,10 +26,15 @@ def GetNewBookLinks(page):
 def GetBookData():
     now = datetime.datetime.now()
     title,writer,translator,publisher,comment,language,isbn,version,hardcover,papertype,picture,category,pages,dimension="","","","","","","","","","","","","",""
+    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
+    cursor = conn.cursor()
     for x in range(1,49):   
         for book in GetNewBookLinks(x):
             sleep(5)
             try:
+                #conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
+                
+
                 response = requests.get(book)
                 content = response.content
                 soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
@@ -42,6 +47,13 @@ def GetBookData():
             else:
                 title = ""            
             writer = soup.find_all("span",{"itemprop":'name'})[0].text.strip()
+            cursor.execute("SELECT distinct Id, Name FROM WRITERS WHERE Name=?",(writer))
+            writer = cursor.fetchone()
+            if len(writer) == 0:
+                cursor.execute("INSERT INTO WRITERS (Name, Update_Date) values (?,?)",(writer, now))
+                cursor.commit()
+
+
             comment = soup.find_all("span",{"itemprop":"description"})[0].text
 
             if soup.find_all("span",{"itemprop":"name"}) is not None and len(soup.find_all("span",{"itemprop":"name"})) > 0:
@@ -107,9 +119,6 @@ def GetBookData():
                 print("ftp error...")
            
             try:
-                #conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
-                conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
-                cursor = conn.cursor()
                 cursor.execute("select Id, Title, Writer, Translator, Isbn, Comment from BOOKS where Title=? or Isbn=?", (title, isbn))
                 repeated = cursor.fetchall()
             

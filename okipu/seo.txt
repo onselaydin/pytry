@@ -182,5 +182,59 @@ Soyal Medayada öne çıkmak için
     - sites.google.com
     - business.google.com işletmemizin google haritalarında çıkması için
     - webmaster araçları. - google.com/webmasters/tools/home?hl=tr
-    
-
+    - google e-ticaret güvenli site rozeti   www.google.com/trustedstores/
+    - mobilegeddon(mobile uyumluluk) https://validator.w3.org/mobile     www.google.com/webmasters/tools/mobile-friendly
+    - Site içeriklerine üyelerin yorum yazması puanlaması...
+    - responsive duyarlı tasarım önemli.
+    - Sitemize ek mobile site yapmak faydalıdır.
+    - flash animasyon varsa kaldır.
+    - hız testi -   https://testmysite.thinkwithgoogle
+    - bing mobile uyumluluk testi - www.bing.com/webmaster/tools/mobile-friendliness
+    - sitenin görünür bölgelerine adres ve telefon paylaşmak önemli bir husustur.
+    - e-ticaret sitesinde 4-5 kelimeden oluşan uzun kelimeler seo açısından çok değerlidir.
+    - sepette ürün bırakan kullanıcıya email ile indirim...
+    - e-ticaret için dönüşüm oranı optimizasyonu aracı --- https://www.iperceptions.com 
+    - cross browser -  tüm tarayıcılarda görünüm testi 
+    - ger dönüşüm yoplamak için mükemmel bir araç - Çevirimiçi anket firması -- SurveyMonkey
+    - online itibar yönetimi yapmak gerekiyor.
+    - Arama motorları yavaş sunucuyu sevmez- Sunucu seçerken dikkat edilmesi gerekenler.
+        - güvenlik yöntemleri nelerdir.
+        - Uptime oranları
+        - Litespeed kullanıcıya
+        - IP bloklama özelliği
+        - DNS sorgularına verilen cevap hızı
+        - Sıkıştırma özellikleri
+        - ilk veri gönderme hızı
+        - Firewall özellikleri ve lisansı
+        - CDN özelliği
+        - Sunucunu bulunduğu ülke
+    - google page speed Insights
+    - webpagetest.org 
+    - loadimpact.com
+araçlar
+- Solve kelimeyi bir çok motorda arar ve ilişkili terimleri bize raporlar
+- Anahtar kelime takip aracı --  authoritylabs.com
+- Kopya içerik aracı - copyscape
+- georanker - www.georanker.com/local-rank-checker
+- pingdom - hız ölçümü
+- www.browseo.net - arama botları gözünden sitemizin görüntüsü
+- buzzsumo - sosyal medyadaki içerik takip aracı
+- nibbler - sitemizi tarar ve çözümler sunar - nibbler.silktide.com
+- seo site checkup -hataları bulur ve önerilerde bulunur-- seositecheckup.com
+- Eranker - Sitemizdeki sorunları tespit aracı - Eranker
+- buildwith.com - sitemizi inceleme aracı
+- kwfinder.com -- anahtar kelime araştırma sitesi.
+- backlink query tool - linksearchtools.com
+- cognitiveseo.com - backlink query
+- bright local aracı - www.brightlocal.com
+- anahtar kelime aracı - hittail.com
+- search metrics - bir çok araç var içinde
+- www.quetext.com -- içerik kontrol aracı
+- organik hacim ölçme aracı -- spyfu.com
+- hosting tavsiyeleri - turhost - vargeonen - radore - alastyr
+- sektör analizi yapar
+- sitemizi google servislerine kaydetmeliyiz. takip kodlarını içeri yerleştirmeliyiz.
+- seo araçlarıyla daima siteyi kontrol et.
+- sitemizi destekleyecek bloglar oluşturmalıyız. - blogger, wordpress,webly
+- sektörümüze uygun popüler anahtar kelimeleri araştırmak gerekli.
+- Son olarak çok çalışıyoruz. :)
