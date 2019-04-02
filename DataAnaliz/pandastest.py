@@ -63,6 +63,8 @@ print(df.groupby("Departman").min()) # en az maaş alanlar. max ilede en çok ma
 print(df.groupby("Departman").min()["Maaş"]["Bilişim"]) # sadece maaş sütunu en az rakamla döner.
 #mean ile ortalama maaşları bulabiliriz. 
 """
+
+"""
 # concatenation, join, merge
 dataset1 = {
     "A": ["A1","A2","A3","A4"],
@@ -79,3 +81,37 @@ df1 = pd.DataFrame(dataset1,index = [1,2,3,4])
 df2 = pd.DataFrame(dataset2,index = [5,6,7,8])
 #print(df1)
 print(pd.concat([df1,df2])) # iki tabloyu birleştirdik.
+
+"""
+
+"""
+df = pd.DataFrame({
+    "Col1":[1,2,3,4,5,6],
+    "Col2":[100,100,200,300,300,100],
+    "Col3":["Ali","Veli","Hasan","Ayşe","Fatma","Hasan"]
+})
+print(df.head(n=3)) # ilk 3 kaydı getirir.
+print(df["Col2"].unique()) # sql deki distinct gibi.
+
+def times3(x):
+    return x * 3
+print(df["Col2"].apply(times3)) # times3 fonnsiyonunu her rakam için çağırır ve çarpma işlemini getirir.
+
+onsel = lambda x : x * 2
+print(onsel(4))
+
+print(df["Col2"].apply(lambda x : x * 2))
+
+print(df.columns) #sütunları listeler
+print(len(df.index)) # satır sayısını verir
+print(df.sort_values("Col2",ascending=False)) #Col2 ye göre sıralar
+"""
+
+#pivot table
+df = pd.DataFrame({
+    "Ay":["Mart","Nisan","Mayıs","Mart","Nisan","Mayıs","Mart","Nisan","Mayıs"],
+    "Şehir":["Ankara","Ankara","Ankara","İstanbul","İstanbul","İstanbul","İzmir","İzmir","İzmir"],
+    "Nem":[10,25,50,21,67,80,30,70,75]
+})
+print(df)
+print(df.pivot_table(index="Ay",columns="Şehir",values="Nem"))
