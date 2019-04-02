@@ -52,7 +52,8 @@ def GetBookData():
             if len(writer) == 0:
                 cursor.execute("INSERT INTO WRITERS (Name, Update_Date) values (?,?)",(writer, now))
                 cursor.commit()
-
+                cursor.execute("SELECT distinct Id, Name FROM WRITERS WHERE Name=?",(writer))
+                writer = cursor.fetchone()
 
             comment = soup.find_all("span",{"itemprop":"description"})[0].text
 

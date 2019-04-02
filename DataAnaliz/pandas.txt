@@ -1,0 +1,6 @@
+pandas sql sorguları gibi işlemler yapabileceğiz. Başka veri kaynaklarına bağlanabileceğiz.
+kurulum için eğer anaconda yüklü değilse
+conda install pandas
+yoksa
+pip install pandas
+

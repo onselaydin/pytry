@@ -47,3 +47,4 @@ http://nbviewer.jupyter.org/github/mustafamuratcoskun/Data-Analiz-Notebooklar/tr
 numpy ve pandas gibi araçlar kullanılıyor
 Anaconda yüklüyse c:\> conda install numpy
 anaconda yüklü değilse c:\> pip install numpy
+
