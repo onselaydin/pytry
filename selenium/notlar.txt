@@ -48,3 +48,12 @@ numpy ve pandas gibi araçlar kullanılıyor
 Anaconda yüklüyse c:\> conda install numpy
 anaconda yüklü değilse c:\> pip install numpy
 
+python dosyalarını exe yapmak
+pip install pyinstaller
+c:\> pyinstaller
+
+https://pypi.org/
+
+https://pypi.org/project/PyInstaller/
+
+https://discordapp.com/channels/405403391410438165/476473718479257620

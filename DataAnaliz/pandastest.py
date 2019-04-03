@@ -106,7 +106,7 @@ print(df.columns) #sütunları listeler
 print(len(df.index)) # satır sayısını verir
 print(df.sort_values("Col2",ascending=False)) #Col2 ye göre sıralar
 """
-
+"""
 #pivot table
 df = pd.DataFrame({
     "Ay":["Mart","Nisan","Mayıs","Mart","Nisan","Mayıs","Mart","Nisan","Mayıs"],
@@ -115,3 +115,14 @@ df = pd.DataFrame({
 })
 print(df)
 print(df.pivot_table(index="Ay",columns="Şehir",values="Nem"))
+"""
+# veriseti portalı https://www.kaggle.com
+#csv (comma seperated values - virgulle ayrılmış veriler)
+
+#dataset = pd.read_csv("C:/pytry/DataAnaliz/USvideos.csv") # csv dosyasından okur. read_excel de yapılabilir.
+#print(dataset)
+#dataset.to_csv("dosyaadi yolu",index=false)  #veri setini csv dosyası olarak indexler hariç oluşturur.
+
+#web sayfasında ne kadar tablo varsa alır. Biz 0 ncı yı aldık.
+new_ds = pd.read_html("https://www.contextures.com/xlSampleData01.html",header=0)
+print(new_ds[0])
