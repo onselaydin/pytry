@@ -1,0 +1,5 @@
+ctrl + r  -- arama
+ls -la 
+default yapmak #dconf reset -f /
+iptables https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html
+

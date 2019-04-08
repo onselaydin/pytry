@@ -1,0 +1,259 @@
+TensorFlow
+google tarafından geliştirilmiştir. 
+iki tip kurulum var 
+1- CPU için
+2- GPU için. (ekran kartı uygunsa bu önerirlir. GPU içinde çok sayıda çekirdek barındırdığı için paralel işlemleri hızlıca yapıyor.)
+https://www.tensorflow.org/install
+
+> python
+> import tensorflow as tf
+
+
+pip install opencv-python
+pip uninstall opencv-python
+
+imageio -- resimler üzerinde işlem yapmak için
+pip install imageio
+
+Viola-Jones Algoritması günümüzün en güçlü yüz tanıma algoritmasıdır.
+Önce algoritma eğitiliyor. Sonra tanımlanıyor.
+Yüz tanımada ilk olarak yüze önden bakmalıyız.
+Resimi siyah beyaz yaparız.
+
+Haar-like özellikleri ( Alfred Haar )
+    -Kenar özellikleri
+    -Çizgi özellikleri
+    -dörtkare özellikleri
+örneğin insanda dudaklar daki koyu kısım çizgi özelliği
+
+integral Resimi
+
+sınıflandırıcı eğitme(resim önce küçültülür 24x24 px)
+ne kadar çok yüz öğretirsek okadar daha iyi
+
+Adaptive boosting (adaboost)
+24x24px küçük bir resimde 180 bin+ özellik vardır.
+f(x) = α1f1(x)+α2f2(x)+α3f3(x)f...
+f(x) sınıflandırıcı
+f1 f2 f3 özelliklerimiz
+α1 α2 α3 ağırlıklarımız
+
+Cascading
+resimde burun yada göz yoksa yüzde yoktur mantığında bir teknik.burun varsa diğer özelliğe bakılıyor.
+hesaplama sayısını azaltarak bilgisayarın zorlanmasını azaltıyoruz.
+
+projede göz tanıma için haarcascade-eye.xml kullanacağız. Aşağıdaki linkde diğer
+tanımlama xml model dosyaları var.
+https://github.com/opencv/opencv/tree/master/data/haarcascades
+
+film izlerken insanların tepkileri ölçülüyor. Hangi sahne güldürüyor hangisi ne tepki veriyor gibi.
+
+videoda ses işleri bozuyor. Sesi ayırmak gerekiyor.
+http://www.audioremover.com/
+
+
+
+
+
+
+
+-------------------------------------------
+Kurulumlar (Yazılı)
+Bölüm 2, Ders 5
+ANACONDA
+https://www.anaconda.com/download/
+
+64-bit Anaconda indirip kurun. Ayrıca Python kurulumu yapmanıza gerek yok. Python Anaconda'yla birlikte gelecek.
+
+Kurulum esnasında "add Python to my PATH" seçeneğini işaretleyin.
+
+Not: Eğer Python bilmiyorsanız kursun sonundaki ek dersi izleyebilirsiniz.
+
+
+
+
+
+PYCHARM
+
+
+https://www.jetbrains.com/pycharm/download/
+
+Ben Pycharm Community Edition kullanıyorum. Siz isterseniz farklı bir IDE'de kullanabilirsiniz.
+
+Pycharm kurulumu yaptıysanız interpreter belirtin.
+
+File/Settings/Project:Face Detection/Project Interpreter
+
+Sağdaki küçük butona tıklayıp "Add Local" seçin.
+
+Açılan pencereden "System Interpreter" seçeneğini seçip anaconda içerisinde python.exe yolunu verin. Bu yol şurası:
+
+C:\Users\KullanıcıAdı\Anaconda3\python.exe
+
+Interpreter belirledikten sonra yeni bir proje oluşturun ve proje oluşturma ekranında belirlediğiniz interpreter'ı seçin.
+
+
+
+
+TENSORFLOW
+Tensorflow kurarken iki seçeneğiniz var. CPU veya GPU. Eğer uygun ekran kartınız varsa kesinlikle GPU için kurulum yapın, CPU'ya göre daha hızlı eğitim gerçekleşecek. Nvidia'dan farklı bir ekran kartınız varsa CPU için kurulum yapmanız gerekiyor. Sadece Nvidia ekran kartları destekleniyor. Ekran kartınızda CUDA compute capability 3.5'den büyükse Tensorflow'u GPU için kurabilirsiniz. Aşağıdaki linkten ekran kartınız uygun mu kontrol edebilirsiniz.
+
+https://developer.nvidia.com/cuda-gpus
+
+1. Tensorflow CPU
+
+Komut penceresini açın. (Windows+R ile çalıştırı açıp cmd yazabilirsiniz)
+
+Açılan komut penceresinde aşağıdaki pip install'u çalıştırın:
+
+C:\> pip install --upgrade tensorflow
+CPU için kurulum bu kadar. Komut penceresinde "python" yazıp aşağıdaki kod ile test edebilirsiniz:
+
+>>> import tensorflow as tf
+>>> hello = tf.constant('Hello, TensorFlow!')
+>>> sess = tf.Session()
+>>> print(sess.run(hello))
+Not: import tensorflow as tf yazdıktan sonra FutureWarning alabilirsiniz. Bu bir hata değil sadece numpy ile ilgili bir uyarı. Kodlarınız sorunsuz çalışacaktır.
+
+Sonuç olarak "Hello, Tensorflow!" göreceksiniz.
+
+2. Tensorflow GPU
+
+Tensorflow'u GPU için kurmak istiyorsanız öncesinde CUDA ve CuDNN kurmanız gerekiyor.
+
+2a.CUDA
+
+https://developer.nvidia.com/cuda-downloads
+
+CUDA 10.0 indirip kurun. Farklı bir sürüm kurmayın diğer sürümlerde çalışmaz.
+
+Kurulum bittikten sonra bilgisayara sağ tıklayıp özellikleri seçin.
+
+Gelişmiş sistem ayarları/ortam değişkenleri
+
+Açılan pencerede sistem değişkenleri bölümünden Path'i seçip düzenleye tıklayın.
+
+Aşağıdaki adresleri Yeni'ye tıklayarak tek tek ekleyin (Kurulumu farklı bir yere yaptıysanız o adresi verin)
+
+NVIDIA Installer failed / NVIDIA kurulum programı başarısız hatası alırsanız çözümü aşağıdadır.
+
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\extras\CUPTI\libx64
+
+2b. CuDNN
+
+https://developer.nvidia.com/rdp/cudnn-archive
+
+İndirmek için üyelik almanız gerekebilir.
+
+CUDNN 7.4.2 for CUDA tool kit 10.0'ı seçip işletim sisteminize göre indirin.
+
+İnen zip dosyasında bin klasörüne gidip  cudnn64_7.dll dosyasını kopyalayın.
+
+Bu dosyayı Program Files'da CUDA'nın içerisindeki bin dosyasına yapıştırın.
+
+Bu adres default olarak aşağıdaki gibi olacaktır.
+
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin
+
+2c. GPU Güncelleme
+
+http://www.nvidia.com.tr/drivers
+
+Ekran kartı sürücünüzü güncelleyin.
+
+2d. Tensorflow GPU
+
+Komut penceresini açın. (Windows+R ile çalıştırı açıp cmd yazabilirsiniz)
+
+Açılan komut penceresinde aşağıdaki pip install'u çalıştırın:
+
+C:\> pip install --upgrade tensorflow-gpu
+GPU için kurulum bu kadar. Komut penceresinde "python" yazıp aşağıdaki kod ile test edebilirsiniz:
+
+>>> import tensorflow as tf
+>>> hello = tf.constant('Hello, TensorFlow!')
+>>> sess = tf.Session()
+>>> print(sess.run(hello))
+Sonuç olarak "Hello, Tensorflow!" göreceksiniz.
+
+Not: import tensorflow as tf yazdıktan sonra FutureWarning alabilirsiniz. Bu bir hata değil sadece numpy ile ilgili bir uyarı. Kodlarınız sorunsuz çalışacaktır.
+
+Not: GPU için kurduysanız tf.Session() yazdıktan sonra ekran kartlarınızla ilgili bilgiler göreceksiniz. Bunlar hata değil.
+
+
+
+
+
+Diğer Kütüphaneler
+Ne zaman eksik bir kütüphane varsa Tensorflow kurarken yaptığımız gibi pip install ile kurabilirsiniz. Kursta kullanacağımız aşağıdaki iki kütüphanenin kurulu olduğuna emin olun.
+
+pip install opencv-python
+pip install imageio
+
+
+
+
+Sıkça Karşılaşılan Hatalar
+Hata: PermissionError: [WinError 5] Erişim engellendi:
+
+Çözüm: Yönetici izniniz olmadığında bu hatayı alırsınız. Komut penceresini yönetici olarak çalıştırıp tekrar deneyin.
+
+
+
+Hata: Pycharm'da Please select a valid Python interpreter uyarısı.
+
+Çözüm: Yukarda Pycharm kurulumunda anlattığım şekilde interpreter belirtin.
+
+
+
+Hata: ImportError: Could not find 'cudart64_90.dll'
+
+Çözüm. Farklı bir CUDA sürümü yüklediğinizde veya CUDA'yı Path'e eklemediğinzde bu hatayı alırsınız. Yukarda anlatılan şekilde uygun CUDA sürümünü indirip Path'e ekleyin.
+
+
+
+Hata: CUDA kurarken NVIDIA Installer failed / NVIDIA kurulum programı başarısız hatası.
+
+Çözüm-1: Yükleme kısmında standart kurulumu seçmeyin. Özel kurulumu seçip CUDA seçeneğinin altındaki Visual Studio Integration kısmındaki işareti kaldırıp yüklemeye devam edin.
+
+Çözüm-2: Önce tüm nvidia kurulumlarını silin sonra display driver uninstaller programı ile driver'ı tamamen bilgisayarınızdan temizleyin. Daha sonra CUDA kurulum adımlarını tekrarlayın.
+
+
+
+
+
+Hata: ModuleNotFoundError: No module named 'tensorflow'
+
+Çözüm: Eğer bu hatayı Pycharm'da aldıysanız büyük ihtimalle interpreter belirlememişsiniz demektir. Yukarda Pycharm kurulumunun anlatıldığı yerde gösterildiği gibi interpreter belirleyin. Eğer bu hatayı komut penceresinde aldıysanız pip install'u düzgün şekilde gerçekleştirmemişsiniz demektir. Tarif ettiğim şekilde pip install yapın.
+
+
+
+Hata: TypeError: parse() got an unexpected keyword argument 'transport_encoding'
+
+Çözüm: pip'i güncelleyerek bu hatayı düzeltebilirsiniz. pip'i güncellemek için aşağıdaki komutu komut penceresinde çalıştırın.
+
+conda install pip
+
+
+
+Hata: Failed to load the native Tensorflow runtime.
+
+Çözüm: Tensorflow 1.6 sürümüyle beraber bazı CPU'larda bu hata oluyor. Aşağıdaki komutlarla Tensorflow'u silip tekrar conda install ile yükleyin.
+
+pip uninstall tensorflow
+conda install tensorflow
+
+
+
+
+
+
+Hata: "distributed 1.21.8 requires msgpack which is not installed"
+
+Çözüm: Aşağıdaki komutları çalıştırın.
+
+conda install pip
+pip uninstall -y msgpack-python
+pip install msgpack
