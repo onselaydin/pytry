@@ -51,6 +51,20 @@ film izlerken insanların tepkileri ölçülüyor. Hangi sahne güldürüyor han
 videoda ses işleri bozuyor. Sesi ayırmak gerekiyor.
 http://www.audioremover.com/
 
+Modeller
+R-CNN(Region-based Convolutional Neural Network) Ailesi
+-Fast R-CNN
+-Faster R-CNN
+SSD(Single Shot MultiBox Detector) Ailesi
+Öneri : Hız lazımsa SSD isabet oranı olması için Faster RCNN
+        Faster R-CNN daha güçlü donanıma ihtiyaç duyar.
+Mask R-CNN (facebook geliştiricileri yapmış) - image segmentation yapıyor. REsmin içindeki
+objeleri seçiyor.
+
+tensorflow object Detection(google ürünüdür.)
+https://github.com/tensorflow/models/tree/master/research/object_detection
+
+
 
 
 

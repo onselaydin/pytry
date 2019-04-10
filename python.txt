@@ -203,3 +203,17 @@ deploy django
 https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
 https://github.com/mustafamuratcoskun/django-blog-app
 
+pratik if kullanım örnekleri
+örnek:
+my_string = "Hello World"
+if "Hello" in my_string
+    print("true")
+else:
+    print("false")
+
+örnek:
+my_dictionery = {"k1":100,"k2":200,"k3":300 }
+if 100 in my_dictionery.key():
+    print("true")
+else
+    pring("false")

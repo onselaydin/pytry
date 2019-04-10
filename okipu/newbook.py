@@ -13,7 +13,8 @@ import re #regex kutuphanesi
 def GetNewBookLinks(page):
     #https://canyayinlari.com/kitaplar/?SayfaNo=1
     #url = "https://www.kitapyurdu.com/index.php?route=product/category&path=128_159&filter_in_stock=1&page="+str(page)
-    url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
+    #url = "https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=2&filter_in_stock=1&filter_in_stock=1&page="+str(page)
+    url = "https://www.kitapyurdu.com/yeni-cikan-kitaplar/haftalik/2.html"
     response = requests.get(url)
     html_icerigi = response.content
     soup = BeautifulSoup(html_icerigi.decode('utf-8', 'ignore'),"html.parser")
@@ -26,15 +27,13 @@ def GetNewBookLinks(page):
 def GetBookData():
     now = datetime.datetime.now()
     title,writer,translator,publisher,comment,language,isbn,version,hardcover,papertype,picture,category,pages,dimension="","","","","","","","","","","","","",""
-    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
+    #conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
+    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
     cursor = conn.cursor()
     for x in range(1,49):   
         for book in GetNewBookLinks(x):
             sleep(5)
             try:
-                #conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
-                
-
                 response = requests.get(book)
                 content = response.content
                 soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
@@ -45,15 +44,20 @@ def GetBookData():
             if soup.find_all("h1",{"class":"product-heading"}) is not None and len(soup.find_all("h1",{"class":"product-heading"}))>0:
                 title = soup.find_all("h1",{"class":"product-heading"})[0].text.strip()
             else:
-                title = ""            
+                title = "" 
+
             writer = soup.find_all("span",{"itemprop":'name'})[0].text.strip()
-            cursor.execute("SELECT distinct Id, Name FROM WRITERS WHERE Name=?",(writer))
+
+            cursor.execute("SELECT distinct Id FROM WRITERS WHERE Name=?",(writer))
             writer = cursor.fetchone()
-            if len(writer) == 0:
+
+            if writer is None or len(writer) == 0:
+                writer = soup.find_all("span",{"itemprop":'name'})[0].text.strip()
                 cursor.execute("INSERT INTO WRITERS (Name, Update_Date) values (?,?)",(writer, now))
                 cursor.commit()
-                cursor.execute("SELECT distinct Id, Name FROM WRITERS WHERE Name=?",(writer))
+                cursor.execute("SELECT distinct Id FROM WRITERS WHERE Name=?",(writer))
                 writer = cursor.fetchone()
+
 
             comment = soup.find_all("span",{"itemprop":"description"})[0].text
 
@@ -136,15 +140,16 @@ def GetBookData():
 
                     cursor.execute("INSERT INTO BOOKS (Title,Writer,Translator,Publisher,Comment,Language,Isbn,BookEdition,NumberofPages,HardcoverType,PaperType,\
                     ProductDimensions,BookCategory,KucukResimYol,BuyukResimYol,IsActive,Update_Date,Company) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                    (title,writer,translator,publisher,comment,language,isbn,version[0],pages,hardcover,papertype,dimension,category,picture,picture,True,now,"KITAPYURDU"))
+                    (title,writer[0],translator,publisher,comment,language,isbn,version[0],pages,hardcover,papertype,dimension,category,picture,picture,True,now,"KITAPYURDU"))
                     conn.commit()
-                    conn.close()
+                    
                     print(str(isbn) + " Imported...")
-            except:
-               print("db error...")
+            except pyodbc.Error as err:
+               print(err)
 
             for f in glob.glob(dir_path+"\\*.jpg"):
                 os.remove(f)
+    conn.close()
     print("Receive complated. waiting 3 hours...")
     sleep(3600 * 3) # 3 saatte bir
 
