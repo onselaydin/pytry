@@ -151,7 +151,7 @@ def GetBookData():
                 os.remove(f)
     conn.close()
     print("Receive complated. waiting 3 hours...")
-    sleep(3600 * 3) # 3 saatte bir
+    sleep(3600 * 2) # 2 saatte bir
 
 while True:
     GetBookData()
