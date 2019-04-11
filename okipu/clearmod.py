@@ -9,8 +9,10 @@ def clear(text):
     "<div class=""col-sm-4 mb10"">": "", "<td>": "", "</td>": "", "&rdquo;": """, "&lsquo;": """, "<tr>": "", "</tr>": "",
     "<table>": "", "</table>": "", "<a href>": "", "</a>": "", "<table class=""pd-table"">": "", "<span lang=""TR"">": "",
     "<p style=""margin - left:0in; margin - right:0in"">": "", "<em>": "", "</em>": "", "<p style=""margin - left:36.0pt"">": "",
-    "<div style=\"margin - top:10px\">": "", "<li>": "", "</li>": "", "<ul>":"","</ul>":""
+    "<div style=": "", "<li>": "", "</li>": "", "<ul>":"","</ul>":"","&raquo;":"","&laquo;":"",
+    "&auml;":"","&szlig;":"","margin-top:10px":"",">":""
     }
+    """
     t=""
     for i,j in donustur.items():
         a = text.find(i, 0, len(text))
@@ -19,3 +21,8 @@ def clear(text):
         else:
             t=text
     return t
+    """
+    for karakter in donustur:
+        if karakter in text:
+            text =  text.replace(karakter, donustur[karakter])
+    return text

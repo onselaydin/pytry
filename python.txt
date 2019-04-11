@@ -217,3 +217,8 @@ if 100 in my_dictionery.key():
     print("true")
 else
     pring("false")
+
+Enumerate #listenin index numarasını veriyor.
+for (index,number) in Enumerate(list(range(5,15))):
+    print(index)
+    print(number)
