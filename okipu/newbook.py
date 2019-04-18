@@ -1,4 +1,3 @@
-# - *- coding: utf- 8 - *-
 import requests
 from bs4 import  BeautifulSoup
 import datetime
@@ -30,7 +29,7 @@ def GetBookData():
     #conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=mssql11.turhost.com;PORT=1433;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #linux
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=mssql11.turhost.com;DATABASE=Okipu101_db;UID=okipusa;PWD=u5C/4Sc}') #windows
     cursor = conn.cursor()
-    for x in range(1,49):   
+    for x in range(1,25):   
         for book in GetNewBookLinks(x):
             sleep(5)
             try:
@@ -137,6 +136,8 @@ def GetBookData():
                         category = category.Id
 
                     version = re.findall("[0-9]", version)
+                    if len(re.findall("[0-9]",pages)) == 0:
+                        pages = 0
 
                     cursor.execute("INSERT INTO BOOKS (Title,Writer,Translator,Publisher,Comment,Language,Isbn,BookEdition,NumberofPages,HardcoverType,PaperType,\
                     ProductDimensions,BookCategory,KucukResimYol,BuyukResimYol,IsActive,Update_Date,Company) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",

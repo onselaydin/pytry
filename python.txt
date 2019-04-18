@@ -222,3 +222,671 @@ Enumerate #listenin index numarasını veriyor.
 for (index,number) in Enumerate(list(range(5,15))):
     print(index)
     print(number)
+
+#---------pratik fonksiyonlar
+def orner_fonsiyon(*args)
+    return args
+orden_fonksiyon("a","b","c","d")
+
+def ornek_func(**kwargs)
+    print(kwargs)
+
+ornek_func(yas=40,maas=5000,ad=onsel)
+
+def divide(number):
+    return number / 2
+
+my_list = [1,2,3,4,5,6,7,8]
+list(map(divide, my_list))
+
+#----filter
+list = ["Ali","veli","hasan","Aliye"]
+def kontrol(kelime):
+    return "Ali" in string
+
+list(filter(kontrol,list))
+sonuç olarak ali ve aliye gelir.
+
+
+
+
+#-----------------calendar
+import calendar
+cal=calendar.TextCalendar()
+print(cal.formatmonth(2019,4))
+
+#---------------numpy
+import numpy as np
+
+first_arr = np.array([1, 2, 3, 4])
+print(first_arr)
+
+second_array = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+print(second_array)
+
+print("------------- Print Array Element - arr[x,y]-------------")
+print("my_arr [1,2] : " + str(second_array[1, 2]))
+print("------------- Print Array Rank - arr.ndim -------------")
+print("Array Rank : " + str(second_array.ndim))
+
+print("------------- Print Array Rows & Column - arr.shape -------------")
+print("Array Row:Columns : %s %s" % second_array.shape)
+
+print("------------- Print Array Size (Rows * Column) - arr.size -------------")
+print("Array Size : " + str(second_array.size))
+
+print("------------- Print Type of Array - type(arr) -------------")
+print("Array Type : " + str(type(second_array)))
+
+print("------------- Print Array with value 1 only - np.ones((x,y)) -------------")
+arr_of_ones = np.ones((3, 2))
+print(arr_of_ones)
+
+print("------------- Print Array with value 0 only - np.zeroes((x,y)) -------------")
+arr_of_zeros = np.zeros((3, 3))
+print(arr_of_zeros)
+
+print("------------- Print Array with random values np.random.random(x) -------------")
+arr_of_random = np.random.random(5)
+print(arr_of_random)
+
+print("------------- Print Array with value constant value - np.full((x,y), z) -------------")
+arr_of_constant = np.full((3, 3), 3)
+print(arr_of_constant)
+
+print("------------- Print Array empty array (with zeroes) - np.empty((x,y)) -------------")
+empty_array = np.empty((3, 3))
+print(empty_array)
+
+print("------------- Print Array with Diagonal values -------------")
+arr_with_diag = np.eye(5) * np.random.random(5)
+print(arr_with_diag)
+
+print("------------- Print Array as identity matrix -------------")
+num_identity = np.identity(4)
+print(num_identity)
+
+print("------------- Print Array Copy -------------")
+copy_of_first_array = first_arr.copy()
+print(copy_of_first_array)
+
+print("------------- Print Array with values in Range -------------")
+arr_with_two_step = np.arange(0, 10, 2)
+print(arr_with_two_step)
+
+print("------------- Print Array with values in Range -------------")
+arr_with_range = np.arange(10)
+print(arr_with_range)
+
+print("------------- Print Array with similar space range -------------")
+arr_with_linspace = np.linspace(0, 100, 7)
+print(arr_with_linspace)
+
+arr_with_range2 = np.arange(10)
+print(arr_with_range2.shape)
+print(arr_with_range2)
+
+print("------------- Print Array with resizing rows & columns -------------")
+arr_with_range2.resize(4, 5)
+print(arr_with_range2.shape)
+print(arr_with_range2)
+
+two_d_array = np.array([[1, 2, 3], [4, 8, 9]])
+
+print("------------- Print Array with reshape the rows and columns -------------")
+print(two_d_array.reshape(3, 2))
+
+print("------------- Print Array in single dimension -------------")
+print(two_d_array.ravel())
+
+print("------------- Print Array in as transpose matrix -------------")
+print(two_d_array.transpose())
+
+#-----------------------------
+args example
+def topla(*args):
+    return sum(args)
+örnek
+def topla(*rakam)
+    return sum(rakam)
+#-------------------------- mors converter
+ime = input("Input the text to convert to morse: \n\n")
+lngth = len(ime)
+l = ""
+
+print("You wrote: " + ime)
+for x in range(0, lngth):
+    c = ime[x]
+    c = c.upper()
+    if (c == "A"):
+        print(".- | a\n")
+    elif (c == "B"):
+        print("-... | b\n")
+    elif (c == "C"):
+        print(" -.-. | c\n")
+    elif (c == "D"):
+        print("-.. | d\n")
+    elif (c == "E"):
+        print(". | e\n")
+    elif (c == "F"):
+        print("..-. | f\n")
+    elif (c == "G"):
+        print("--. | g\n")
+    elif (c == "H"):
+        print(".... | h\n")
+    elif (c == "I"):
+        print(".. | i\n")
+    elif (c == "J"):
+        print(".--- | j\n")
+    elif (c == "K"):
+        print("-.- | k\n")
+    elif (c == "L"):
+        print(".-.. | l\n")
+    elif (c == "M"):
+        print("-- | m\n")
+    elif (c == "N"):
+        print("-. | n\n")
+    elif (c == "O"):
+        print("--- | o\n")
+    elif (c == "P"):
+        print(".--. | p\n")
+    elif (c == "Q"):
+        print(" --.- | q\n")
+    elif (c == "R"):
+        print(".-. | r\n")
+    elif (c == "S"):
+        print("... | s\n")
+    elif (c == "T"):
+        print("- | t\n")
+    elif (c == "U"):
+        print("..- | u\n")
+    elif (c == "V"):
+        print("...- | v\n")
+    elif (c == "W"):
+        print(".-- | w\n")
+    elif (c == "X"):
+        print("-..- | x\n")
+    elif (c == "Y"):
+        print("-.-- | y\n")
+    elif (c == "Z"):
+        print("--.. | z\n")
+    elif (c == " "):
+        print("\n\n")
+    elif (c == "!"):
+        print("Not existing/translatable in morse code. | !\n")
+    elif (c == "?"):
+        print("..--.. | ?\n")
+    elif (c == "@"):
+        print(".--.-. | @\n")
+    elif (c == "/"):
+        print("-..-. | /\n")
+    elif (c == "."):
+        print(".-.-.- | .\n")
+    elif (c == ","):
+        print("--..-- | ,\n")
+    elif (c == "1"):
+        print(".---- | 1\n")
+    elif (c == "2"):
+        print("..--- | 2\n")
+    elif (c == "3"):
+        print("...-- | 3\n")
+    elif (c == "4"):
+        print("....- | 4\n")
+    elif (c == "5"):
+        print("..... | 5\n")
+    elif (c == "6"):
+        print("-.... | 6\n")
+    elif (c == "7"):
+        print("--... | 7\n")
+    elif (c == "8"):
+        print("---.. | 8\n")
+    elif (c == "9"):
+        print("----. | 9\n")
+    elif (c == "0"):
+        print("----- | 0\n")
+
+
+#-- number led converter
+try:
+    s = int(input().strip())
+    assert 0 <= s <= 9999999999
+except (ValueError, AssertionError):
+    s = 1234567890
+
+p_num = {
+0: ' _ | ||_|',
+1: '     |  |',
+2: ' _  _||_ ',
+3: ' _  _| _|',
+4: '   |_|  |',
+5: ' _ |_  _|',
+6: ' _ |_ |_|',
+7: ' _   |  |',
+8: ' _ |_||_|',
+9: ' _ |_| _|',
+}
+
+for i in range(3):
+    for n in str(s):
+        print(p_num[int(n)][i*3:i*3+3], end = '')
+    print()
+-----------------
+print(*list(((chr(176 + bool(j & 2**(25-i)) * 43)+(i//25)*'\n') for j in [0,16267488,2129392,2129904,2129904,2113504,2105280,2101120,2098944,16253440,0,3966448,4375808,4384000,4371936,4365568,4361472,3966448,0,18135948,18260560,18199436,18129538,30718556,0,0] for i in range(26))), sep='')
+
+----------------
+#-----google api
+from urllib.request import urlopen as OPEN
+from urllib.parse import urlencode as ENCODE
+from xml.etree import ElementTree as XML
+# importing only the necessary for memory saving
+
+api_url = 'http://maps.googleapis.com/maps/api/geocode/xml?'
+# the location of Google's geolocation API
+
+address = input('Enter location: ')
+if len(address) < 1:
+    address = "Warsaw, Poland"
+    # if no address specified, try my home city :)
+url = api_url + ENCODE({'sensor': 'false', 'address': address})
+# putting the parts together in UTF-8 format
+print ('\nRetrieving location for:', address)
+data = OPEN(url).read()
+# getting that data
+# print ('Retrieved',len(data),'characters')
+tree = XML.fromstring(data)
+# digging into the XML tree
+
+res = tree.findall('result')
+# let's see the results now
+
+lat = res[0].find('geometry').find('location').find('lat').text
+# dig into the XML tree to find 'latitude'
+lng = res[0].find('geometry').find('location').find('lng').text
+# and longitude
+lat = float(lat)
+lng = float(lng)
+if lat < 0:
+    lat_c = chr(167)+'S'
+else:
+    lat_c = chr(167)+'N'
+if lng < 0:
+    lng_c = chr(167)+'W'
+else:
+    lng_c = chr(167)+'E'
+# format the coordinates to a more appealing form
+
+location = res[0].find('formatted_address').text
+location_type = res[0].find('geometry').find('location_type').text
+# location holds the geomap unit found by API, based on user input
+place_id = res[0].find('place_id').text
+
+
+# Time for the second part...
+url = 'http://maps.googleapis.com/maps/api/place/details/xml?'
+# the location of Google Places API
+# will need a valid key for that 
+# url = api_url + ENCODE({'placeid': place_id, 'key': ''})
+
+data = OPEN(url).read()
+tree = XML.fromstring(data)
+res = tree.findall('status')[0].text
+# rating = res[0].find('rating').text
+
+print("\n==>", location, "<==")
+print('Latitude: {0:.3f}{1}'.format(abs(lat), lat_c))
+print('Longitude: {0:.3f}{1}'.format(abs(lng), lng_c))
+print('Location type:', location_type)
+print('Place ID:', place_id)
+print('Rating:', res) # REQUEST_DENIED so far...
+
+#-------------------random password generator
+import random, re, string
+
+def validate(password):
+  # check if password contains:
+  # a letter..
+  letter = re.search(r"[a-zA-Z]",
+    password) is None
+  # a digit..
+  digit = re.search(r"\d", password) is None
+  # a symbol..
+  symbol = re.search(r"\W", password) is None
+  # the blood of a virgin... ok, no.  
+  return not(letter or digit or symbol)
+
+
+def random_password(length):
+  charset = (
+    string.ascii_letters
+    + string.digits
+    + string.punctuation
+  )
+  return ''.join((
+    random.choice(charset)
+      for ch in range(length)
+  ))
+
+
+def main():
+  try:
+    # Enter the length of your password
+    passwd_len = int(input())
+  except ValueError:
+    print("Please enter a number!")
+    return 1
+        
+  if passwd_len >= 3 and passwd_len <= 100:
+    password = ""
+    while not validate(password):
+      password = random_password(passwd_len)
+    print("Your shiny brand new password:")
+    print("-"*30)
+    print(password)
+        
+  else:
+    print("Please enter a number between 3 and 100.")
+
+
+if __name__ == "__main__":
+    main()
+
+#----------------number to Word
+helper = {
+        0: '',
+        1: 'one',
+        2: 'two',
+        3: 'three',
+        4: 'four',
+        5: 'five',
+        6: 'six',
+        7: 'seven',
+        8: 'eight',
+        9: 'nine',
+        10: 'ten',
+        11: 'eleven',
+        12: 'twelve',
+        13: 'thirteen',
+        14: 'fourteen',
+        15: 'fifteen',
+        16: 'sixteen',
+        17: 'seventeen',
+        18: 'eighteen',
+        19: 'nineteen',
+        20: 'twenty',
+        30: 'thirty',
+        40: 'fourty',
+        50: 'fifty',
+        60: 'sixty',
+        70: 'seventy',
+        80: 'eighty',
+        90: 'ninety',
+        100: 'hundred',
+        1000: 'thousand'
+}
+
+def word(num):
+    global helper
+    if num < 1:
+        return
+        
+    # Count digits
+    p = len(str(num))
+    if p % 3 == 0:
+        # Hundred
+        word(num // 100)
+        print(helper[100], end=' ')
+        word(num % 100)
+    elif p < 3:
+        if num in helper:
+            print(helper[num], end=' ')
+        else:
+            print(helper[num // 10 * 10], end=' ')
+            print(helper[num % 10], end=' ')
+    else:
+        # Thousand
+        word(num // 1000)
+        print(helper[1000], end=' ')
+        word(num % 1000)
+
+
+MAX = 99999
+
+num = int(input())
+if num > MAX or num < -MAX:
+    print("Number out of limits, retry")
+elif num == 0:
+    print("Zero")
+elif num < 0:
+    print("Minus ", end='')
+    word(-num)
+    print()
+else:
+    word(num)
+    print()
+#----------------send email
+import smtplib
+
+sender = "my_email@gmail.com"
+receiver = "your_email@your_server.com"
+password = "my_password"
+message = "Subject:my_subject\nmy_message"
+
+with smtplib.SMTP("smtp.gmail.com", 587) as smtpserver:
+    smtpserver.ehlo()
+    smtpserver.starttls()
+    smtpserver.ehlo()
+    smtpserver.login(sender, password)
+    smtpserver.sendmail(sender, recipient, message)
+    
+print("Send was successful.")
+
+#-------------------------number to roman
+rom_num = [(1000,'M'),(900,'CM'),(500,'D'),(400,'CD'),(100,'C'),(90,'XC'),(50,'L'),(40,'XL'),(10,'X'),(9,'IX'),(5,'V'),(4,'IV'),(1,'I')]
+
+def num_to_roman(number):
+    roman=''
+    while number > 0:
+        for i,j in rom_num:
+            while number >= i:
+                roman += j
+                number -= i
+    return roman
+    
+number = int(input("Enter any number :"))
+print(number)
+#x = num_to_roman(number)
+print("Roman number of", number , "is :",num_to_roman(number))
+
+#----mors alfabesi
+CODE = {'A': '.-',     'B': '-...',   'C': '-.-.', 
+        'D': '-..',    'E': '.',      'F': '..-.',
+        'G': '--.',    'H': '....',   'I': '..',
+        'J': '.---',   'K': '-.-',    'L': '.-..',
+        'M': '--',     'N': '-.',     'O': '---',
+        'P': '.--.',   'Q': '--.-',   'R': '.-.',
+        'S': '...',    'T': '-',      'U': '..-',
+        'V': '...-',   'W': '.--',    'X': '-..-',
+        'Y': '-.--',   'Z': '--..',
+        
+        '0': '-----',  '1': '.----',  '2': '..---',
+        '3': '...--',  '4': '....-',  '5': '.....',
+        '6': '-....',  '7': '--...',  '8': '---..',
+        '9': '----.',  '.': '.-.-.-', ',': '--..--',
+        '!': '–·–·––', '?': '..--..', ' ': '/'
+        }
+
+
+def main():
+    
+    msg = input('MESSAGE: ')
+    
+    for char in msg:
+        print (CODE[char.upper()])
+        
+if __name__ == "__main__":
+    main()
+
+#---------OOP in py
+#Class
+class As:
+    #Constructor
+    def __init__ (self, a , b, c):
+        self.name = a
+        self.color = b
+        self.pet = c
+    #Function/Method
+    def introduce (self):
+        print("My name is " + self.name +".")
+        print("My color is " + self.color +".")
+        print("My pet is " + self.pet +".\n")
+#Objects
+p1 = As("Nancy", "Fair", "Rabbit")
+p2 = As("Emily","Dark","Kitten")
+# Method called
+p1.introduce ()
+p2.introduce ()
+
+#---------------------------bit
+a=8191
+
+print('\n'.join(str(bin(i|1<<7))[3:].replace('0','\xb0').replace('1','\xdb')for i in(a&54,a>>5,a&255,a&62,a&28,a&8)))
+#-----------------------multithreading
+import threading
+
+class SampleThread(threading.Thread):
+     def __init__(self, from_var, to_var):
+         super(SampleThread, self).__init__()
+         self.from_var = from_var
+         self.to_var = to_var
+         self.res = 0
+
+     def run(self):
+         for i in range(self.from_var, self.to_var):
+             self.res += i
+
+thread1 = SampleThread(0, 10000)
+thread2 = SampleThread(10000, 50000)
+thread1.start() 
+thread2.start()
+# This waits until the thread has complete
+thread1.join()
+thread2.join()
+# At this point, both threads have completed
+result = thread1.res + thread2.res
+print(result)
+#--------------------------------------------sqlite
+import sqlite3
+
+connect = sqlite3.connect('peopledb.sqlite') # if in same folder
+
+# connect = sqlite3.connect('/storage/emulated/0/Download/peopledb.sqlite')
+# ^^^ this location is default for Android's downloads, use it if you will run this code in qpython3 for Android
+
+cursor = connect.cursor()
+# establish a link to the db
+
+def insert(name, age):
+    # method to add a new record
+    sqlstr = 'INSERT INTO PEOPLE(Name, Age) VALUES ("' + str(name) + '", ' + str(age) + ')'
+    cursor.execute(sqlstr)
+    connect.commit()
+
+def filter(f):
+    # method to filter records based on 'f' statement, see comments below
+    sqlstr = 'SELECT * FROM PEOPLE WHERE ' + f + ' ORDER BY Name'
+    print ('Database filtered by:', sqlstr, '\n')
+    print ('ID', 'Name            ', '    Age')
+    print ("-----------------------------")
+    for row in cursor.execute(sqlstr):
+        print(('{0:{width}}'.format(row[0], width=2)),
+              ('{0:{width}}'.format(row[1], width=20)),
+              ('{0:{width}}'.format(row[2], width=2)))
+    print('-----------------------------\n')
+
+def display_all():
+    # method to list all records
+    sqlstr = 'SELECT * FROM PEOPLE'
+    print ('Showing the whole database')
+    print ('ID', 'Name            ', '    Age')
+    print ("-----------------------------")
+    for row in cursor.execute(sqlstr):
+        print(('{0:{width}}'.format(row[0], width=2)),
+              ('{0:{width}}'.format(row[1], width=20)),
+              ('{0:{width}}'.format(row[2], width=2)))
+    print('-----------------------------\n')
+
+filter('Age>25')            # lists all older than 25
+filter('Name LIKE "%k%"')   # lists all with a 'k' in Name
+display_all()
+
+
+# n = input("Enter name: ")
+# a = input("Enter age: ")
+# insert(n, a)
+# print("New record added.")
+# ^^^ unhash the above to be able to add a new record (Name, Age)
+
+cursor.close()
+#----------------satranç
+import sys, codecs
+
+sys.stdout = codecs.getwriter('utf_16')(sys.stdout.buffer, 'strict')
+
+
+
+queen = chr(9812)
+king = chr(9813)
+tower=chr(9814)
+bishop=chr(9815)
+knight=chr(9816)
+pawn=chr(9817)
+
+queen_white=chr(9818)
+king_white=chr(9819)
+tower_white=chr(9820)
+bishop_white=chr(9821)
+knight_white=chr(9822)
+pawn_white=chr(9823)
+
+#table 8x8
+a=chr(11035)
+
+bug="|"+a+"  "+a+"  "+a+"  "+a+"  "
+error="|  "+a+"  "+a+"  "+a+"  "+a+" "
+
+#Your color is white.
+def table_white():
+    print("__________________")
+    print("|"+tower+" "+knight+" "+bishop+" "+queen+king+" "+bishop+" "+knight+" "+tower)
+    print("|"+(pawn+" ")*7+pawn)
+    print(bug)
+    print(error)
+    print(bug)
+    print(error)
+    print("|"+(pawn_white+" ")*7+pawn_white)
+    print("|"+tower_white+" "+knight_white+" "+bishop_white+" "+queen_white+king_white+" "+bishop_white+" "+knight_white+" "+tower_white)
+    
+     
+#Your color is black.    
+def table_black():
+    print("__________________")
+    print("|"+tower_white+" "+knight_white+" "+bishop_white+" "+queen_white+king_white+" "+bishop_white+" "+knight_white+" "+tower_white)
+    print("|"+(pawn_white+" ")*7+pawn_white)
+    print(error)
+    print(bug)
+    print(error)
+    print(bug)
+    print("|"+(pawn+" ")*7+pawn)
+    print("|"+tower+" "+knight+" "+bishop+" "+queen+king+" "+bishop+" "+knight+" "+tower)
+    
+    
+#ending.   
+table_white()
+table_black()
+table_white()
+
+#----------------------------
+
+
+
+

@@ -34,14 +34,16 @@ cursor.execute("select Id,Title,Isbn,Comment from BOOKS order by Id DESC")
 books = cursor.fetchall()
 
 for b in books:
+    id = b[0]    
     title = b[1]
     isbn = b[2]
     comment = b[3]
     if comment.find("Kitap Özellikleri") > -1 or comment.find("Açıklaması ve Özellikleri") > -1:
         converted = TrConvert(title)
         print(isbn + " " + title +" -- "+ converted)
-
-response = requests.get(mainurl+converted)
-html_content = response.content
-soup = BeautifulSoup(html_content.decode('utf-8', 'ignore'),"html.parser")
-hrefs = soup.find_all("div",{"class":"cover"})
+        response = requests.get(mainurl+converted)
+        html_content = response.content
+        #soup = BeautifulSoup(html_content.decode('utf-8', 'ignore'),"html.parser")
+        cursor.execute("update BOOKS set Comment=? where Id=?", "",id)
+        conn.commit()
+conn.close()
