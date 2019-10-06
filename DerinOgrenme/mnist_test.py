@@ -1,3 +1,9 @@
+#windows için $ set TF_CPP_MIN_LOG_LEVEL=2
+#mnist bir veri dataseti. içine harfler rakamlar vs resimler olan bir datasetdir. 
+#https://www.tensorflow.org/guide/datasets
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
@@ -33,5 +39,5 @@ def test_accuracy():
     feed_dict_test = {x: mnist.test.images, y_true: mnist.test.labels}
     acc = sess.run(accuracy, feed_dict = feed_dict_test)
     print('Testing accuracy:', acc)
-training_step(0)
+training_step(2000)
 test_accuracy()

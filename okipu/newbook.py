@@ -38,7 +38,6 @@ def GetBookData():
                 soup = BeautifulSoup(content.decode('utf-8', 'ignore'),"html.parser")
             except:
                 print("Connection problem")
-            
 
             if soup.find_all("h1",{"class":"product-heading"}) is not None and len(soup.find_all("h1",{"class":"product-heading"}))>0:
                 title = soup.find_all("h1",{"class":"product-heading"})[0].text.strip()
@@ -60,10 +59,26 @@ def GetBookData():
 
             comment = soup.find_all("span",{"itemprop":"description"})[0].text
 
-            if soup.find_all("span",{"itemprop":"name"}) is not None and len(soup.find_all("span",{"itemprop":"name"})) > 0:
-                publisher = soup.find_all("span",{"itemprop":"name"})[0].text.strip()
+            if len(soup.find_all("span",{"itemprop":"name"})) >= 0:
+                publisher ="Kollektif"
+            elif soup.find_all("span",{"itemprop":"name"}) is not None and len(soup.find_all("span",{"itemprop":"name"})) > 0:
+                publisher = soup.find_all("span",{"itemprop":"name"})[1].text.strip()
             else:
-                publisher = ""
+                publisher = "Kollektif"
+
+            cursor.execute("SELECT distinct Id FROM PUBLISHERS WHERE Name=?",(publisher))
+            publisher = cursor.fetchone()
+            if publisher is None or len(publisher) == 0:
+                if soup.find_all("span",{"itemprop":"name"}) is not None and len(soup.find_all("span",{"itemprop":"name"})) > 0:
+                    publisher = soup.find_all("span",{"itemprop":"name"})[1].text.strip()
+                else:
+                    publisher = "Kollektif"
+                cursor.execute("INSERT INTO PUBLISHERS (Name, Update_Date) values (?,?)",(publisher, now))
+                cursor.commit()
+                cursor.execute("SELECT distinct Id FROM PUBLISHERS WHERE Name=?",(publisher))
+                publisher = cursor.fetchone()
+     
+
 
             #category = soup.find_all("div",{"class":"grid_6 omega alpha section"})[0].text.lstrip("İlgili Kategoriler:\nKitap »").split()[0]
             if soup.find_all("div",{"class":"grid_6 omega alpha section"}) is not None and len(soup.find_all("div",{"class":"grid_6 omega alpha section"})) > 0:
@@ -138,10 +153,11 @@ def GetBookData():
                     version = re.findall("[0-9]", version)
                     if len(re.findall("[0-9]",pages)) == 0:
                         pages = 0
-
+                        
+                    
                     cursor.execute("INSERT INTO BOOKS (Title,Writer,Translator,Publisher,Comment,Language,Isbn,BookEdition,NumberofPages,HardcoverType,PaperType,\
                     ProductDimensions,BookCategory,KucukResimYol,BuyukResimYol,IsActive,Update_Date,Company) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                    (title,writer[0],translator,publisher,comment,language,isbn,version[0],pages,hardcover,papertype,dimension,category,picture,picture,True,now,"KITAPYURDU"))
+                    (title,writer[0],translator,publisher[0],comment,language,isbn,version[0],pages,hardcover,papertype,dimension,category,picture,picture,True,now,"KITAPYURDU"))
                     conn.commit()
                     
                     print(str(isbn) + " Imported...")
