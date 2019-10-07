@@ -54,3 +54,209 @@ https://www.youtube.com/watch?v=4ZY_4OeyJsw
 https://www.youtube.com/watch?v=QASAqcuuzgI
 
 # docker container stats
+
+https://github.com/buraka/udemy-docker
+
+--------------------------------------------------------------Kurulum 1.yol
+c:\>docker --version
+digitalocean https://www.youtube.com/watch?v=plIeC5Zpp8A
+
+https://hub.docker.com/search/?type=edition&offering=community
+
+#lsb_release -a  //codename önemli
+----------------------------------------------------------------Kurulum 2.yol
+https://get.docker.com/
+# sudo apt install curl
+$ docker version
+
+Kullanımıcı docker grubuna atmayı unutmayalım. Aksi halde sürekli sudo yazmak zorunda kalacağız
+örnek $ sudo usermod -aG docker root
+
+
+----------------------------------------Docker Machine kurulumu
+https://docs.docker.com/machine/install-machine/
+
+base=https://github.com/docker/machine/releases/download/v0.16.0 &&
+ curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+ sudo mv /tmp/docker-machine /usr/local/bin/docker-machine &&
+ chmod +x /usr/local/bin/docker-machine
+
+----------------------------------------Docker Compose Kurulumu
+https://docs.docker.com/compose/install/
+
+docker-machine version
+docker-compose version
+-----------------------------------------
+# docker container ls
+# docker images
+
+https://desktop.github.com/
+
+https://cmder.net/
+
+https://atom.io/
+
+$ docker info
+$ docker
+$ docker management-command sub-command [options]
+$ docker container run nginx
+$ docker <ana komut> <yardımcı sub komut> (parametreler)
+image = çalıştırmak istediğimiz uygulama
+container = imajları çalıştırdığımız yer
+imajları çekeceğimiz yer = hup.docker.com
+örnek image nginx
+
+-ilk imajın oluşturulması-
+$ docker container run nginx
+
+-uygulamayı dışarı açıyoruz-
+$ docker container run --publish 80:80  
+$ docker container run -p HOST:CONTAINER
+//ilk 80 lokalimizden dışarıya hangi porttan servis vereceğimiz.
+//Diğeride dışardan lokalimize hangi hangi porttan geleceği
+
+--YArdım almak--
+$ docker container run --help
+
+--çalışan Containerları listelemek--
+$ docker container ls
+Not: Her conatinera isim vererek oluşturmalıyız ve her container ismi farklı olmalı.
+
+--containerin detach (-d) komutu ile arka planda çalışmasını sağlamak--
+$ docker container run -p 80:80 --name webserver -d nginx
+
+------------------------https://www.slideshare.net/bgasecurity/ssh-tnelleme-ile-erik-filtreleyicileri-atlatmak-----------------------
+--tüm containerları görmek--
+$ docker container ls -a
+
+--Arkada çalışan containerın loglarına bakmak--
+$ docker container logs webserver
+-- container süreçlerine bakmak--
+$ docker container top webserver
+
+--container durdurmak-*
+$ docker container ls ile id den yada verdiğimiz isim ile durdurabiliriz.
+$ docker container stop webserver
+
+--container silmel için --
+id ve isimle yan yana yazarak birden fazla aynı anda silebiliriz.
+Çalışan containerı silemezsin
+önce tüm containerları listeleyelim $ docker container ls -a
+$ docker container rm hardcore_taussig dazzling_nash
+çalışanı zorlayıp silmek için -f parametresi kullanılır
+$ docker container rm -f blablacontainer
+Tüm durmuş containerları silmek için : $ docker container prune
+
+--imajın özel bir versiyonunu kurmak--
+$ docker container run --publish 80:80 --name webserver -d nginx:1.13
+
+--ödev nginx,httpd(apache) ve mysql --
+$ docker container run -d -p 80:80 --name proxy nginx
+$ docker container run -d -p 8080:80 --name webserver httpd
+$ docker container run -d -p 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+
+--linux .net core 3.0 kurulumu--
+https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/sdk-current
+
+--komut satırından http isteği atmak--
+$ curl localhost:8080
+
+--processleri listelemek--
+$ docker container top webserver
+
+--istatistikleri görmek--
+$ docker container stats
+
+--konfigürasyon bilgileri--ip network bilgilerinide verir.--
+$ docker container inspect webserver
+$ docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webserver
+
+--yeni container oluşturma ve komut isteminden bağlanmak için--
+$ docker container run -it -- name proxy nginx bash
+kapalıysa tekrar bağlanmak için $ docker container start -ai proxy
+
+--çalışan bir container içinde bağlanmak için--
+$ docker container exec -it proxy bash
+
+--container kapandığında silinmesi--
+$ docker container run --rm -it nginx bash
+
+--açık olan portları görmek--
+$ docker container port webserver
+
+--containerlar arası iletişim için -p ye ihtiyaç yol--
+örneğin:  * frontend -> react + nodejs -> my_frontend_network
+          * backend -> apache + mysql -> my_backend_network
+
+https://www.draw.io/
+
+--Docker Network--
+$ docker network ls
+$ docker network inspect bridge
+
+--yeni network oluşturmak--
+$ docker network create bir_isim
+$ docker network create --help
+
+--network silmek--
+$ docker network rm my_net
+
+--Bağlanmak--
+$ docker network connect my_net proxy
+$ docker network inspect my_net
+--Bağlantıyı kesmek--
+$ docker network disconnect bridge proxy
+
+
+--Containerlar arası haberleşme--
+not: ipler ile haberleştirme tavsiye edilmiyor. ipler değişebilir. Bunun yerine domain name ile haberleşme sağlanacak.
+- Önce bir network yarat ve iletişim kurulacak containerları bu networklere connect yap.
+- Örneğin webserver ve proxy containra exec ile erişmek gerekiyor
+- $ docker container exec it webserver bash
+- apt-get update && apt-get install iputils-ping kurulumlarını yap
+- ping proxy //webserver containerdan proxy e erişimi kontrol ettik.
+- docker container exec it webserver ping proxy // container içine girmeden ping atar ve roota geri döner.
+- diğer container gir pingi kur ve webserver containerına eriş.
+Not: Eğer makinalar bridge deyse birbirleri ile iletişim kuramazlar. illada brigde kullanacaksak
+    $ docker network connect --help de --link list var. birbirleri arasında link kurmalısın. Ama önerilen
+    ayrı bir network kurmaktır.
+
+--yeni container ve aynı anda networke eklemek--
+$ docker container run -d --name proxy --network my_net nginx
+container listesi almak $ docker ps
+
+--Dns Round Robin --
+bir tür load balance kurgusudur....
+amazon aliexpress gibi sitelerin kullandığı bir teknikdir
+- yeni bir network oluştur. $ docker network create abc
+- yeni container oluşturacağız. elastik 2 versiyonunu kuruyoruz.
+    $ docker container run -d --network abc --network-alias search elasticsearch:2
+- tekrar aynı komutu çalıştırıyoruz ve aynı network-alias isimli 2 adet elasticsearch containerimiz olacak
+    $ docker container run -d --network abc --network-alias search elasticsearch:2
+- aynı networkde üçüncü bir container oluşturuyoruz $ docker container run -it --network abc centos:7 bash
+    Bu centos içinde curl default geliyor.
+- centos bash içindeykey elastike bağlanmayı deniyoruz. [root@504379f3db6f /]# curl search:9200
+- sürekli # curl search:9200 komutunu dene. Yukarıda bir oluşturduğumuz iki elastik makinesi arasında gidip geliyor. Cluster gibi oldu.
+
+--Docker Hub kullanmak--Github benzeri bir sistem var--
+kendi imajlarımızı ekleyebiliriz tag verebilir public yapabiliriz.
+hub.docker.com
+docker hub dan bakıp imajın istenilen version indirmek. $ docker pull nginx:1.15.9
+tag lara göre indirebiliriz. örnek $ docker pull nginx:mainline
+alpine tagları imajın en küçük boyutlu olanıdır. ör şu anki nginx 116 mb ama alpine sürümü 16 mb :)
+
+--nginx imajı katmanları arasında ne değişim olmuş--
+$ docker image history nginx:latest
+$ docker image inspect httpd:latest //apache detaylar
+$ docker image history httpd:latest
+
+-- Kendi imagemizi yaratmak  ve huba göndermek --
+$ docker image tag --help
+$ docker image tag nginx:latest oncell/nginx
+yada $ docker image tag oncell/nginx:latest oncell/nginx:01 //0.1 tagıyla hub da repomuzda görünecek.
+$ docker login // zaten loginse gerek yok. işin bitince $ docker logout yapabiliriz.
+$ docker push oncell/nginx
+
+
+
+

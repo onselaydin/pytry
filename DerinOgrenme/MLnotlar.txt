@@ -271,3 +271,11 @@ Hata: "distributed 1.21.8 requires msgpack which is not installed"
 conda install pip
 pip uninstall -y msgpack-python
 pip install msgpack
+
+REsim Tanımada aşağıdaki Modeller ön sırada
+ALEXNET = 14milyondan fazla resim 1000 küsür kategorisi vardır. En başarılı modeldir.
+GoogLeNet = Network içinde networkler var.
+REstNEt = 2015 de birinci oldular. 
+Inception V4
+
+Eğer inception gibi bir modeli eğitmeye kalksak 120 GB Ram 8 adet NVidia 

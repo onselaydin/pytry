@@ -6,6 +6,14 @@ ELU - Daha doğru sonuç ama daha yavaş.
 Maxout - nöron ölümü olmuyor. algoritma daha fazla daha yavaş
 
 
+https://github.com/tensorflow/models/tree/master/research/object_detection
+
+https://github.com/protocolbuffers/protobuf/releases
+
+https://github.com/tzutalin/labelImg
+
+
+
 Kurulumlar (Yazılı)
 Bölüm 2, Ders 5
 ANACONDA
@@ -193,3 +201,5 @@ Hata: "distributed 1.21.8 requires msgpack which is not installed"
 conda install pip
 pip uninstall -y msgpack-python
 pip install msgpack
+
+

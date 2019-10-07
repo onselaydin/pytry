@@ -1,0 +1,17 @@
+https://github.com/singe/dns2proxy
+
+https://www.bitfinex.com/
+
+https://github.com/byt3bl33d3r/sslstrip2
+
+linux'da opt klasörünün içine
+#git clone https://github.com/singe/dns2proxy
+
+routing sslstrip 10000 portunda çalışıyor 80 portundan gelenleri 10000 e yönlendir
+#iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
+
+dns reverse
+#iptables -t nat -A PREROUTING -p udp --destination-port 53 -j REDIRECT --to-port 53
+
+https://github.com/atilsamancioglu/32-MyPacketListener
+
