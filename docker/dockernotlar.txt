@@ -257,6 +257,10 @@ yada $ docker image tag oncell/nginx:latest oncell/nginx:01 //0.1 tagıyla hub d
 $ docker login // zaten loginse gerek yok. işin bitince $ docker logout yapabiliriz.
 $ docker push oncell/nginx
 
+--docker file--
+imaj oluşturmak için kullanılır.
+$ docker build kullanacağız.
+$ docker image build -t custom .
 
 
 
