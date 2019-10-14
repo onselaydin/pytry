@@ -19,6 +19,10 @@ curl -sSL https://get.docker.com/ | sh
 
 https://hub.docker.com/
 
+--MYSQL Cluster için image--
+https://hub.docker.com/r/percona/proxysql
+https://hub.docker.com/r/percona/percona-xtradb-cluster 
+
 # docker info
 # docker version
 
@@ -58,13 +62,16 @@ https://www.youtube.com/watch?v=QASAqcuuzgI
 https://github.com/buraka/udemy-docker
 
 --------------------------------------------------------------Kurulum 1.yol
+Linux verion öğrenmek
+cat /etc/os-release
+
 c:\>docker --version
 digitalocean https://www.youtube.com/watch?v=plIeC5Zpp8A
 
 https://hub.docker.com/search/?type=edition&offering=community
 
 #lsb_release -a  //codename önemli
-----------------------------------------------------------------Kurulum 2.yol
+----------------------------------------------------------------Kurulum 2.yol(Bu yöntem ile kuruyoruz...)
 https://get.docker.com/
 # sudo apt install curl
 $ docker version
@@ -262,5 +269,74 @@ imaj oluşturmak için kullanılır.
 $ docker build kullanacağız.
 $ docker image build -t custom .
 
+--Docker Volume--
+-eğer container yada imajı güncellersek önceki veriler gider. Buna en güzel örnek
+veritabanıdır. Veriler uçabilir. Veri kaybetmemek için bu tekniği kullanacağız.
+mysql için hub.docker.com da volume açıklamalarını gözden geçir.
+$ docker pull mysql    --mysql imajını indiriyoruz.
+$ docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql
+Containerlarımıza bakalım $ docker container ls
+Container içine bakalım neler var. $ docker container inspect mysql
+çıkan şemada Mounts tagına gel. destination ve source kısmındaki yola datayı mapliyebiliyoruz.
+$ docker volume ls  Komutu ile oluşan volumeları görebiliyoruz. inspect deki mount tagındagi idyi burada bul.
+$ docker volume inspect a7646522b3175e66258b58e76bf7fedfa287e495b14e6139c834a2e8b456b188  --detayları görürüz
+Bu mysql containerı silsek bile veri kaybetmiyeceğiz docker volume ls ile bak volume duruyor.
+Kendimiz bir volume ismi verebiliyoruz.
+$ docker container run -d --name mysql2 -v mysql-db:/var/lib/mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+yeni bir mysql container oluştursak -v mysql-db:/var/lib/mysql kodu ile veri kaybetmeyiz.
+--bind Mount--
+Dockerfile
+index.html
+pwd parametresi bulunduğumuz klasör anlamında...
+$ docker container run -d --name web -p 80:80 -v $(pwd):/usr/share/nginx/html nginx
+container içine bağlanacağız $ docker container exec -it web bach
+html içini değiştir. ve çalıştırıp web sayfasını yenile
+--ödev--
+$ docker container run -d --name mongo -v mongo-db:/data/db mongo
+$ docker container ls
+$ docker container rm -f mongo
+$ docker container run -d --name mongo -v mongo-db:/data/db mongo:4.0
+$ docker container inspect mongo
+$ docker volume ls
+$ docker volume prune --kullanılmayan volumeler silinir
+$ docker container exec -it mongo bash
+# mongo
+> db.collection.inspectOne({text:'abc'})   --kayıt ekledik
+> db.collection.find()  --kayda baktık
+> exit --db den çıktık
+# exit --mongo container dan çıktık
+$ docker container rm -f mongo --mongonun bir üst version kuracağız bu yüzde siliyoruz.
+$ docker container run -d --name mongo -v mongo-db:/data/db mongo:4.1  --4.0 dan 4.1 e güncelliyoruz.
 
+--DOCKER COMPOSE--
+containerlar arası konfigürasyon yapmak için kullanacağız.
+iki ana komutu var.
+* docker-compose up  --Tüm network,volume,containerları ayağı kaldırır.
+* docker-compose down -- Herşeyi durdup siler.
 
+docker-compose.yml şu an 3.1 sürümü var.
+        template.yml dosyası içi aşağıdaki gibi 
+            verison: '3.1' 
+            services: #container adı
+                servicename: # --name
+                    image: # image
+                    command: # opt çalıştırmak istediğimiz komutları yazıyoruz
+                    environment: # Opt -e
+                    volumes: # opt, -v
+                    ports: # opt, -p
+                servicename2:
+
+                servicename3:
+            volumes: # Optional, docker volume create
+            network: # Optional, docker network create
+basit bir Örnek:
+
+version: '3.1'
+#docker container run --name expresstest -p 80:80 -v $(pwd):/src oncell/expresstest
+services:
+    test:
+        image: oncell/expresstest
+        volumes:
+            -.:/src
+        ports:
+            - '80:80'
