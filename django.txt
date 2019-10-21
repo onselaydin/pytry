@@ -1,0 +1,49 @@
+kurulum
+www.djangoproject.com
+>pip install Django
+>django-admin --version
+Yeni Proje oluşturmak
+>django-admin startproject blog
+settings.py  -- tüm ayarlar buradan yapılır.
+sunucuyu çalıştırmak
+>python manage.py runserver
+
+localhost:8000/admin  --admin panele erişiriz.
+db Browser for SQlite ile veritabaanı yönetilir.
+>python manage.py migrate
+>python manage.py createsuperuser
+
+Proje içinde kendi uygulamamızı oluşturmak
+>python manage.py startapp article
+
+Önce Model oluşturmak -- models.py
+class Article(models.Model):
+    author = models.ForeingKey("auth.User", on_delete = models.CASCADE)
+    title = models.CharField(max_length = 50)
+    content = models.TextField()
+    create_date = models.DateTimeField(auto_now_add=True)
+-----------------------
+admin.py ye import edeceğiz
+from .models import Article
+admin.site.register(Article)
+----------------------------
+Djangoya bu modülü bildireceğiz
+En alta "article",
+-----------------------
+yeni modelin oluşması için migration yapmalıyız.
+>python manage.py makemigrations
+Bu işlem sonrası migrations klasörü içinde dosya oluşacak.
+>python manage.py migrate
+----------------------
+docs.djangoproject.com/en/2.0/ref/contrib/admin
+
+python hosting Hosting
+www.pythonanywhere.com
+ORM için proje içindeyken
+>python manage.py shell
+>>> from django.contrib.auth.models import User --hazır User modülünü dahil ettik.
+>>> from aticle.models import Article
+>>> User  --- diyince class olduğunu anlıyoruz.
+>>> newUser = User(username = "denemeuser",password="1234") -- yeni bir obje oluşturduk.
+
+
