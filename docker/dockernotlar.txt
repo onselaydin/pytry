@@ -340,3 +340,59 @@ services:
             -.:/src
         ports:
             - '80:80'
+
+-------Docker Swarm-----------
+http://devnot.com/2017/docker-swarm-mode-ozellikleri-mimarisi-ve-kullanimi/
+docker swart aktif olup olmadığına bakmak
+# docker info
+swarm: inactive satırını gördük # docker swarm init komutu ile aktif ederiz.
+swarmı kapatmak # docker swarm leave
+
+--Docker servis oluşturmak--
+alpine 5 mb linux :)
+# docker service create alpine ping google.com
+# docker service ls -- servis listesi
+# docker service update sharp_lalande --replicas 5
+# docker service ls
+# docker service ps sharp_lalande
+# docker container rm -f sharp_lalande.3.3jh4j3h43g54lj463434mhjh
+# docker update --help bir çok ayar var. 
+# docker service update --help  burada daha fazla ayar var.
+                                servisin ne kadar cpu ram kullanacağı belirlenebilir.
+                                hangi networkü kullanacağı ... vs vs..
+--docker servisi uçurmak--
+# docker service rm sharp_lalande
+https://labs.play-with-docker.com/
+https://docs.docker.com/machine/install-machine/
+--Docker Machine --
+varmı yokmu kontrol etmek # docker-machine version
+# docker-machine create node1  -- küçük bir linux sürüm kuracak.
+# docker-machine create node2
+--docker machine bağlanmak--
+# docker-machine ssh node1
+# docker-machine env node1 -- ortam değişkenlerini bulmak
+digitalocean da 10$ makina seçti altında 3 tane node oluşturdu.
+--digitalocean da docker swart kurmak--
+# docker swarm init --advertise-addr dış ip miz.
+# docker node ls
+digitalocean node2 ye gittik ve node1 deki #docker swarm init komutu ile aldğımız join kodunu alıp node2 ye yapıştırıyoruz.
+node2 yi manager yapmak için # docker node update --role manager node2
+
+docker swarm join-token worker
+docker swarm join-token manager ile kodu alır ve diğer nodelardan birine yapıştırırız.
+
+docker node ls ile diğer eklenen nodeları görebiliriz. Tüm bunları digitalocean nodeları üzerinden yaptık.
+Bu node1 e servis ekliyoruz örnek olarak alpine linux servisi kuruyoruz.
+# docker service create --replicas 3 alpine ping google.com
+3 replicada 3 tane çalışan servis yaptık.
+# docker service ls
+# docker service ps servisin_adı
+-----------------------------------
+node1 # docker network create --driver overlay wordpress
+node1 # docker service create --name mysql -e MYSQL_ROOT_PASSWORD=workpress 
+                                           -e MYSQL_DATABASE=wordpress 
+                                           -e MYSQL_USER=wordpress 
+                                           -e MYSQL_PASSWORD=wordpress --network wordpress mysql
+node1 # docker service create --name wordpress --network wordpress -p 80:80 wordpress
+browserdan node1 ipsini browsera yazarak test et.
+3 node ip sinden de aynı servise girilebilir. Bunu swarm yönetiyor.

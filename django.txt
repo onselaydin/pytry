@@ -45,5 +45,6 @@ ORM için proje içindeyken
 >>> from aticle.models import Article
 >>> User  --- diyince class olduğunu anlıyoruz.
 >>> newUser = User(username = "denemeuser",password="1234") -- yeni bir obje oluşturduk.
-
+>>> newUser
+>>> newUser.save() --bu objeyi veritabanına kaydettik
 
