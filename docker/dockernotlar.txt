@@ -284,6 +284,7 @@ Bu mysql containerı silsek bile veri kaybetmiyeceğiz docker volume ls ile bak 
 Kendimiz bir volume ismi verebiliyoruz.
 $ docker container run -d --name mysql2 -v mysql-db:/var/lib/mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
 yeni bir mysql container oluştursak -v mysql-db:/var/lib/mysql kodu ile veri kaybetmeyiz.
+
 --bind Mount--
 Dockerfile
 index.html
@@ -396,3 +397,46 @@ node1 # docker service create --name mysql -e MYSQL_ROOT_PASSWORD=workpress
 node1 # docker service create --name wordpress --network wordpress -p 80:80 wordpress
 browserdan node1 ipsini browsera yazarak test et.
 3 node ip sinden de aynı servise girilebilir. Bunu swarm yönetiyor.
+--Routing Mesh--
+nodeları yönetiyor. Bir nevi load balance yapıyor. Erişilemeyen servisleri yeniden başlatıyor.
+servislerden gelen paketleri uygun tasklara yönlendiriyor.
+                service(10.0.9.2)
+                   |
+ ------------------------------------           
+ |                |                 |
+ node1          node2              node3   
+(10.0.9.3)    (10.0.9.4)          (10.0.9.5)
+örnek
+# docker service create --name search -p 80:9200 --replicas 3 elasticsearch:2
+verify: service converged dedi.
+# docker service ls //komutu ile servisleri kontrol ediyoruz.
+Bende memory hatası verdi :)
+# docker service ps search
+istek atıyoruz. # curl localhost //her seferinde başka node dan geliyor. Bu daha gerçek loadbalance işlemidir.
+# free -m
+# docker stats
+# service docker status
+--Ödev--
+mimaride -- nodejs backend, react frontend, mongodb veritabanı.2 network olacak,1.frontend 2.backend için.
+bir nodejs server oluştur 3000 porttan hizmet versin. get post olsun. 
+bir react projesi oluştur.nodejs'e bağlansın ve 8080 den hizmet versin.
+https://github.com/buraka/udemy-docker/tree/master/docker-swarm-odev1/voting-app-client
+digitalocean daki node1'e ssh ile bağlanıyoruz. nodejs ve react uygulamalarını dockerfile ile build edip hub'a atacağız.
+node1# docker image -t onsel/voteclient ./voteclient
+node1# docker push onsel/voteclient  // docker huba gönderiyoruz.
+aynı şekilde serverıda yap....
+2 adet network oluşturacağız.
+node1# docker network ls //netlere baktık
+node1# docker network create --driver overlay backend
+node1# docker network create --driver overlay frontend
+mongoyu oluşturacağız
+node1# docker service create --name mongo-db -e MONGO_INITDB_USERNAME=mongoadmin 
+                                             -e MONGO_INITDB_ROOT_PASSWORD=secret 
+                                             -e MONGO_INITDB_DATABASE=vote mongo 
+node1# docker service ls //servisi kontol ettik.
+servise network eklemeyi unuttuk servisi update ederek ekleyeceğim
+node1# docker service update --network-add backend mongo-db
+node1# docker service create --name voteserver -p 8080:3000 --network backend --network frontand onsel/voteserver
+node1# docker service create --name voteclient -p 3000:3000 --network frontend onsel/voteclient
+node1# docker service logs voteclient
+docker-compose.yml dosyası ile servisimizi oluşturacağız.
