@@ -439,4 +439,93 @@ node1# docker service update --network-add backend mongo-db
 node1# docker service create --name voteserver -p 8080:3000 --network backend --network frontand onsel/voteserver
 node1# docker service create --name voteclient -p 3000:3000 --network frontend onsel/voteclient
 node1# docker service logs voteclient
-docker-compose.yml dosyası ile servisimizi oluşturacağız.
+
+-yukarıda yaptığımızı docker-compose.yml dosyası ile servisimizi oluşturacağız.-
+version: '3.1'
+
+services:
+    mongo-db:
+        image:mongo
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: mongoadmin
+            MONGO_INITDB_ROOT_PASSWORD: secret
+            MONGO_INITDB_DATABASE: vote
+        networks:
+            - backend
+    voteserver:
+        build: ./voteserver
+        image. onsel/voipserver
+        ports:
+            - 8080:3000
+        networks:
+            - backend
+            - frontend
+        depends_on:
+            - mongo-db
+    voteclient:
+        build: ./voipclient
+        image: onsel/voteonsel
+        ports:
+            - 3000:3000
+        networks:
+            - frontend
+
+networks:
+    backend:
+    frontend:
+
+# docker-compose up ile sistemi ayağı kaldırıyoruz.--- finished
+
+-----Docker Stacks-----
+ürünü canlı ortama almak için kullanılır.Yaml dosyası kullanabiliriz.
+# docker stack deploy
+stack bütün objeleri yönetir.
+node1# docker stack deploy -c docker-compose.yml visulizer
+node1# docker stack ls
+node1# docker stack ps visulizer //daha detaylı bilgi veriyor.
+not: https://hub.docker.com/r/dockersamples/visualizer nodeların durumunu görsel olarak gösterir.
+    docker-compose.yml dosyasındaki image de var.
+
+örnek 2 yml dosyası aşağıdadır. voteapp-python, resultapp-nodejs, redis, db-postgresql, worker-.net
+(vote-app) üzerinden verilen oyun, redis üzerinden bir worker aracılığı ile postgre veri tabanına yazılarak cevapların olduğu web uygulamasından (result-app) canlı olarak takip edildiğini görebilmekteyiz.
+https://github.com/buraka/udemy-docker/tree/master/docker-swarm-stack-sample2
+https://medium.com/devopsturkiye/docker-%C3%BCzerine-genel-bak%C4%B1%C5%9F-docker-stack-kullan%C4%B1m%C4%B1-ff8f04115ec7
+
+--swarm secrets--
+gizli tutmak istediğimiz bilgiler(şifre,ssh key,username)
+mongousername.txt dosyası oluştur içini doldur kaydet.
+mongopassword.txt dosyası oluştur içine şifreni gir kaydet.
+# docker secret // komutları gördük
+# docker secret create mongo-user mongousername.txt //secret yarattık.
+# docker secret create mongo-pass mongopassword.txt //secret yarattık.
+# docker secret ls // secretları görmek için.
+# docker sercret inspect mongo-user //detaları görebiliriz.
+servis içinde secretlarımızı kullanacağız.
+docker service --name mongo --secret mongo-user --secret mongo-pass 
+        -e MONGO_INITDB_ROOT_USERNAME_FILE=/run/secrets/mongo-user
+        -e MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo-pass
+        -p 27017:27017 mongo
+mongoya bağlanmak için compass uygulamasını kullanıyoruz.
+dosya oluşturmadan secret oluşturmak
+# echo "onsel" | docker secret create mongo-user -
+ödev
+https://github.com/buraka/udemy-docker/tree/master/docker-compose-odev1
+
+# watch docker service ls //ile servisler anlık izlenebilir.
+ayağı kalkmayan servisleri görmek
+# docker service ps servisadi
+neden up olmadı Loglara bakacağız
+# docker service logs servisadi
+----docker lifecycle sample--------------
+https://github.com/buraka/udemy-docker/tree/master/docker-lifecycle-sample1
+
+--Docker Healthchecks--
+exit 0: Sorun yok
+exit 1: sorun var
+3 durum var; Starting, Healthy(hatasız), Unhealtht(hata var)
+# docker container run --name es -d --health-cmd "curl -f localhost:9200 || exit 1" 
+        --health-interval 3s
+        --health-timeout 5s elasticsearch:2
+# docker container ls
+# docker container inspect es //en üstte healt tagına odaklan.
+
