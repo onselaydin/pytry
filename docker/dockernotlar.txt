@@ -302,6 +302,10 @@ $ docker volume ls
 $ docker volume prune --kullanılmayan volumeler silinir
 $ docker container exec -it mongo bash
 # mongo
+# mongo admin --username root --password YOURPASSWORD
+> show dbs
+> use blog
+> show collections
 > db.collection.inspectOne({text:'abc'})   --kayıt ekledik
 > db.collection.find()  --kayda baktık
 > exit --db den çıktık
@@ -432,7 +436,8 @@ node1# docker network create --driver overlay frontend
 mongoyu oluşturacağız
 node1# docker service create --name mongo-db -e MONGO_INITDB_USERNAME=mongoadmin 
                                              -e MONGO_INITDB_ROOT_PASSWORD=secret 
-                                             -e MONGO_INITDB_DATABASE=vote mongo 
+                                             -e MONGO_INITDB_DATABASE=vote mongo
+
 node1# docker service ls //servisi kontol ettik.
 servise network eklemeyi unuttuk servisi update ederek ekleyeceğim
 node1# docker service update --network-add backend mongo-db
