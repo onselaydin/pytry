@@ -148,10 +148,13 @@ $ docker container stop webserver
 --container silmel için --
 id ve isimle yan yana yazarak birden fazla aynı anda silebiliriz.
 Çalışan containerı silemezsin
+
 önce tüm containerları listeleyelim $ docker container ls -a
 $ docker container rm hardcore_taussig dazzling_nash
+
 çalışanı zorlayıp silmek için -f parametresi kullanılır
 $ docker container rm -f blablacontainer
+
 Tüm durmuş containerları silmek için : $ docker container prune
 
 --imajın özel bir versiyonunu kurmak--
