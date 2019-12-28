@@ -304,6 +304,7 @@ $ docker container exec -it mongo bash
 # mongo
 # mongo admin --username root --password YOURPASSWORD
 > show dbs
+> db.createCollection("blog")
 > use blog
 > show collections
 > db.collection.inspectOne({text:'abc'})   --kayıt ekledik
