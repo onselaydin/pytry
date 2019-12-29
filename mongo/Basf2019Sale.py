@@ -11,3 +11,15 @@ saletotal = sale.count_documents({"from.gln":glnno})
 singlesaletotal = singlesale.count_documents({"from.gln":glnno})
 
 print(saletotal + singlesaletotal)
+
+# %%
+#section 1
+print('diyez boşluk  ve iki yüzde yan yana section 1 çalıştı')
+
+# %%
+print('section 2 çalıştı')
+
+# %%
+
+
+# %%

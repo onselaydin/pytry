@@ -538,3 +538,5 @@ exit 1: sorun var
 # docker container ls
 # docker container inspect es //en üstte healt tagına odaklan.
 
+--------------------------------------------------------------------------------------
+docker container run -p 27017:27017 --name mongo -e MONGO_INITDB_ROOT_USERNAME=onsel -e MONGO_INITDB_ROOT_PASSWORD=onsel1234 -e MONGO_INITDB_DATABASE=blog -v mongo-db:/data/db -d mongo
