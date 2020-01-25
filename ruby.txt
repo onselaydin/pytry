@@ -1,0 +1,32 @@
+Kurulum 
+https://rubyinstaller.org/downloads/
+
+github.io site kurulumu.
+https://pages.github.com/
+
+
+Ruby ile yazılmış bir statik site oluşturma aracı
+Jekyll https://jekyllrb.com/
+
+create new repository onsel.github.io
+
+Tema seç indir.
+http://jekyllthemes.org/page5/
+https://github.com/kronik3r/daktilo
+
+Ruby command propt aç- tema klasörüne gir. Aşağıdaki komutları sırasıyla çalıştır.
+gem install jekyll
+gem install bundler
+cd daktilo-master
+bundle add jekyll
+
+bundle install
+bundle exec jekyll serve
+
+git init
+git add .
+git commit -am "First commit"
+git remote add blog https://github.com/emredurukan/emredurukn.github.io.git
+git push -u blog master
+
+https://emredurukn.github.io/2016/08/25/github-pages-ile-blog-olusturma.html

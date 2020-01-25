@@ -1,0 +1,43 @@
+Metin duygu durum analizi. 
+https://github.com/malibayram91/temel_tensoflow2_egitimi
+
+https://www.draw.io/
+
+--Veri toplama --
+
+pip install beautifulsoup4  -- siteden veri çekmek için. örneğin hepsiburada.com  urun linkleri, kullanıcı yorumları
+https://github.com/malibayram91/py_hepsibu/blob/master/urun.2.py
+
+#pip install sklearn ## sklearn machine learning için kullanılan kütüphanedir.
+
+import pandas as pd                             #veri bilimi kütüphanesi.
+from sklearn.utils import shuffle               #shuffle verileri karıştırmak için kullanılır.
+data = pd.read_csv('dosyam.csv', sep = "\t")    # \t tab tuşu seperate eder.
+data.head()                                     # veri önizleme
+
+https://www.youtube.com/watch?v=ZpB9mSxyKOw
+https://www.kaggle.com/datasets
+
+Başlangıç -> Veri Alma -> Veri Hazırlama -> Tensorflow -> Eğitim -> Yayınlama
+
+keras tokenizer -- jetonlaştırma
+https://keras.io/preprocessing/text/
+
+
+import tensorflow
+import pandas as pd
+import numpy as np # sayısal matematiksel işlemleri için kullanılır.
+from tensorflow.python.keras.preprocessing.text import Tokenizer
+# buraya kadar çalıştır. Olmayan varsa pip intall ile kur.
+# https://www.tensorflow.org/
+keras.preprocessing.text.Tokenizer(num_words=None, filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', lower=True, split=' ', char_level=False, oov_token=None, document_count=0)
+# https://www.youtube.com/watch?v=XxrK2G_bZr8
+# tokenizer bütün stringdeki kelimelere bir id rakam atıyor.
+
+--model eğitme--
+import numpy as np
+import pandas as pd
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense, GRU, Embedding, CuDNNGRU
+from tensorflow.python.keras.optimizers import Adam
+
