@@ -1,3 +1,15 @@
+jetson nano incelemesi
+128x cuda nvidia maxwell GPU
+4Xarm A57 Cpu 1.43 GHz CPU
+4GB LPDDR4 RAM
+https://embedded.openzeka.com/urun/nvidia-jetson-nano-developer-kit/
+https://www.direnc.net/nvidia-jetson-nano-developer-kitakilli-yapay-zeka-bilgisayari?language=tr&h=df7b4d62&gclid=CjwKCAiAjrXxBRAPEiwAiM3DQtOnnMFkqpP8YIayvUblVocFfEIR4hb_HuxubmbXIaTWkaUcSxoGARoCpiQQAvD_BwE
+https://www.nvidia.com/tr-tr/autonomous-machines/embedded-systems/jetson-nano/
+
+https://www.youtube.com/watch?v=U1wuPgW8B18
+
+simple screen recorder
+
 Metin duygu durum analizi. 
 https://github.com/malibayram91/temel_tensoflow2_egitimi
 
