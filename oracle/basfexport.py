@@ -4,7 +4,7 @@ con = cx_Oracle.connect('LOS/LO1907@alsrac-scan.alisannak.com:1521/local')
 cursor = con.cursor() 
 cursor.arraysize=50    
 cursor.execute("""select * from 
-(select c.*,ROWNUM as r from CARIAGRO_CN c where AGROCODE='8681957313010' 
+(select c.*,ROWNUM as r from CARIAGRO_CN_BASF c where AGROCODE='8681957313010' 
 and DURUM_ZAMAN >= TO_DATE('01/01/2019','DD/MM/YYYY') AND DURUM_ZAMAN <= TO_DATE('25/12/2019','DD/MM/YYYY')
 and GLN IN ('0012000980015','0012000980008','0072000490006',
             '0422000670005','0352000300001','0352000300018',
@@ -24,5 +24,5 @@ and GLN IN ('0012000980015','0012000980008','0072000490006',
 # file.close()
 with open('BASF_SALE_2.csv', 'w',newline='') as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow([ i[0] for i in cursor.description ]) 
+    writer.writerow([ i[0] for i in cursor.description ])
     writer.writerows(cursor.fetchall())
