@@ -30,3 +30,4 @@ git remote add blog https://github.com/emredurukan/emredurukn.github.io.git
 git push -u blog master
 
 https://emredurukn.github.io/2016/08/25/github-pages-ile-blog-olusturma.html
+

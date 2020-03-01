@@ -540,3 +540,13 @@ exit 1: sorun var
 
 --------------------------------------------------------------------------------------
 docker container run -p 27017:27017 --name mongo -e MONGO_INITDB_ROOT_USERNAME=onsel -e MONGO_INITDB_ROOT_PASSWORD=onsel1234 -e MONGO_INITDB_DATABASE=blog -v mongo-db:/data/db -d mongo
+
+docker container run -p 5432:5432 --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=post123 -e POSTGRES_DB=blog  -v postgres:/data/db -d postgres
+
+docker exec -it <CONTAINER_ADI> psql -U <KULLANICI_ADI>
+docker exec -it postgres psql -U root
+
+psql -h localhost -U root -d postgres
+
+--hub da docker imajı arama--
+# docker search postgresql

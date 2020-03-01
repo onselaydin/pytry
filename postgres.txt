@@ -1,6 +1,9 @@
 sudo -i -u postgres -- usera geçiş
 sudo -u postgres psql -- direk çalıştırmak
 
+docker için çalıştırmak
+docker exec -it postgres psql -U postgres
+
 # \q -- çıkış
 
 -- servis durumu
