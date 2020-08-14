@@ -557,3 +557,10 @@ https://www.openshift.com/
 https://ubuntu.com/kubernetes/install
 https://tanzu.vmware.com/kubernetes-grid
 https://kubernetes.io/partners/#kcsp
+
+https://kubernetes.io/docs/concepts/overview/components/#master-components
+https://github.com/kubernetes/minikube/releases/
+https://github.com/ubuntu/microk8s
+https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows
+
+https://www.katacoda.com/courses/kubernetes/playground
