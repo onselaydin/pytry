@@ -256,6 +256,8 @@ tag lara göre indirebiliriz. örnek $ docker pull nginx:mainline
 alpine tagları imajın en küçük boyutlu olanıdır. ör şu anki nginx 116 mb ama alpine sürümü 16 mb :)
 
 --nginx imajı katmanları arasında ne değişim olmuş--
+https://docs.docker.com/engine/reference/commandline/image_pull/
+$ docker image pull nginx -- nginx imagesinin son versiyonunu alıyoruz.
 $ docker image history nginx:latest
 $ docker image inspect httpd:latest //apache detaylar
 $ docker image history httpd:latest
@@ -564,3 +566,17 @@ https://github.com/ubuntu/microk8s
 https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows
 
 https://www.katacoda.com/courses/kubernetes/playground
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+kubectl run
+kubectl create
+kubectl apply
+kubectl versions
+kubectl run my-nginx --image nginx
+kubectl get pods
+kubectl get all
+docker container ls
+docker ps
+kubectl delete deployment my-nginx
+docker container ls
+
