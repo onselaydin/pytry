@@ -373,6 +373,7 @@ alpine 5 mb linux :)
 # docker service rm sharp_lalande
 https://labs.play-with-docker.com/
 https://docs.docker.com/machine/install-machine/
+
 --Docker Machine --
 varmı yokmu kontrol etmek # docker-machine version
 # docker-machine create node1  -- küçük bir linux sürüm kuracak.
@@ -542,6 +543,8 @@ exit 1: sorun var
 docker container run -p 27017:27017 --name mongo -e MONGO_INITDB_ROOT_USERNAME=onsel -e MONGO_INITDB_ROOT_PASSWORD=onsel1234 -e MONGO_INITDB_DATABASE=blog -v mongo-db:/data/db -d mongo
 
 docker container run -p 5432:5432 --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=post123 -e POSTGRES_DB=blog  -v postgres:/data/db -d postgres
+
+docker container run -p 3306:3306 --name mysql -e MYSQL_USER=mysql -e MYSQL_ROOT_PASSWORD=mysql123 -e MYSQL_DATABASE=blog -v mysql:/data/db -d mysql
 
 docker exec -it <CONTAINER_ADI> psql -U <KULLANICI_ADI>
 docker exec -it postgres psql -U root
