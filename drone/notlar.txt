@@ -1,0 +1,13 @@
+https://www.ryzerobotics.com/
+https://github.com/alexgibson/shake.js
+https://www.faa.gov/uas/
+opencv, ffmpeg, numpy, flask
+https://brew.sh
+https://python.org/
+https://www.jetbrains.com/pycharm/
+https://github.com/opencv/opencv
+https://docs.opencv.org/master/db/d28/tutorial_cascade_classifier.html
+https://towardsdatascience.com/face-detection-in-2-minutes-using-opencv-python-90f89d7c0f81
+https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf
+
+192.168.0.16
