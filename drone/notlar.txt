@@ -34,3 +34,6 @@ https://jquerymobile.com/
 https://demos.jquerymobile.com/1.4.5/
 https://demos.jquerymobile.com/1.4.5/table-reflow-styling/
 https://jquerymobile.com/download/
+
+
+https://en.wikipedia.org/wiki/MIME
