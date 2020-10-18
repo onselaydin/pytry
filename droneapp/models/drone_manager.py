@@ -1,20 +1,20 @@
 import logging
 import socket
-import sys
 import time
 import threading
 
+from droneapp.models.base import Singleton
 #https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf
 #https://github.com/dji-sdk/Tello-Python/blob/master/Tello_Video/install/Windows/install.bat
 
-logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 logger = logging.getLogger(__name__)
 #1 feet = 30.48 centimeters
 DEFAULT_DISTANCE = 0.30
 DEFAULT_SPEED = 10
 DEFAULT_DEGREE = 10 # rotalama sağa sola dönme konusu
 
-class DroneManager(object):
+#class DroneManager(object):
+class DroneManager(metaclass=Singleton):
     def __init__(self, host_ip='192.168.10.2',host_port=8889,
                     drone_ip='192.168.10.1',drone_port=8889,
                     is_imperial=False, speed=DEFAULT_SPEED):
@@ -117,30 +117,3 @@ class DroneManager(object):
         return self.send_command('flip l')
     def flip_right(self):
         return self.send_command('flip r')
-
-if __name__ == '__main__':
-    drone_manager = DroneManager()
-
-    drone_manager.set_speed(100) #100 cm/s
-    drone_manager.takeoff()
-    time.sleep(10) # 10 sn benle
-    drone_manager.forward() # 30 cm ileri
-    # drone_manager.clockwise(90)
-    time.sleep(5)
-    # drone_manager.counter_clockwise(90)
-    # time.sleep(5)
-    drone_manager.right() # 30 cm sağ
-    time.sleep(5)
-    drone_manager.back()
-    time.sleep(5)
-    drone_manager.left()
-    time.sleep(5)
-    drone_manager.set_speed(10)
-    time.sleep(1)
-    drone_manager.up() # 30 cm yukarı
-    time.sleep(5)
-    drone_manager.down() # 30 cm aşağı
-    time.sleep(5)
-
-    drone_manager.land()
-    drone_manager.stop()

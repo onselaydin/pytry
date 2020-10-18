@@ -10,4 +10,27 @@ https://docs.opencv.org/master/db/d28/tutorial_cascade_classifier.html
 https://towardsdatascience.com/face-detection-in-2-minutes-using-opencv-python-90f89d7c0f81
 https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf
 
+https://github.com/dji-sdk/Tello-Python
+https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf
+
+
 192.168.0.16
+
+alttaki 3 satırı requirements.txt içine al.
+opencv-python==4.0.0.21
+numpy==1.16.2
+Flask==1.0.2
+
+pip3 install -r requirements.txt
+içindekileri kurar. :)
+
+pip3 freeze  -- bu komut ile kurulu python paketlerini ve versionlarını listeler.
+
+https://flask.palletsprojects.com/en/1.1.x/
+
+https://jquery.com/
+https://tr.reactjs.org/
+https://jquerymobile.com/
+https://demos.jquerymobile.com/1.4.5/
+https://demos.jquerymobile.com/1.4.5/table-reflow-styling/
+https://jquerymobile.com/download/
