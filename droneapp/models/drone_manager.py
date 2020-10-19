@@ -28,7 +28,7 @@ FRAME_CENTER_X = FRAME_X / 2
 FRAME_CENTER_y = FRAME_Y / 2
 
 CMD_FFMPEG = (f'ffmpeg -hwaccel auto -hwaccel_device opencl -i pipe:0 '
-                f'-pix_fmt bgr24 -s {FRAME_X}X{FRAME_Y} -f rawvideo pipe:1')
+                f'-pix_fmt bgr24 -s {FRAME_X}x{FRAME_Y} -f rawvideo pipe:1')
 
 
 #class DroneManager(object):
@@ -55,8 +55,8 @@ class DroneManager(metaclass=Singleton):
         self._response_thread.start()
 
         self.proc = subprocess.Popen(CMD_FFMPEG.split(' '),
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE)
+                                    stdin=subprocess.PIPE,
+                                    stdout=subprocess.PIPE)
 
         self.proc_stdin = self.proc.stdin
         self.proc_stdout = self.proc.stdout
@@ -159,14 +159,14 @@ class DroneManager(metaclass=Singleton):
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock_video:
             sock_video.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
             sock_video.settimeout(.5)
-            sock_video.bind((host_ip,video_port))
-            data=bytearray(2048)
+            sock_video.bind((host_ip, video_port))
+            data = bytearray(2048)
             while not stop_event.is_set():
                 try:
                     size, addr = sock_video.recvfrom_into(data)
                     #logger.info({'action':'receive_video','data':data})
                 except socket.timeout as ex:
-                    logger.warning({'action': 'receive_vide', 'ex': ex })
+                    logger.warning({'action': 'receive_video', 'ex': ex })
                     time.sleep(0.5)
                     continue
                 except socket.error as ex:
@@ -177,14 +177,14 @@ class DroneManager(metaclass=Singleton):
                     pipe_in.write(data[:size])
                     pipe_in.flush()
                 except Exception as ex:
-                    logger.error({'action':'receive_video','ex':ex})
+                    logger.error({'action':'receive_video','ex': ex})
                     break
     def video_binary_generator(self):
         while True:
             try:
                 frame = self.proc_stdout.read(FRAME_SIZE)
             except Exception as ex:
-                logger.error({'action':'video_binary_generator','ex':ex})
+                logger.error({'action':'video_binary_generator','ex': ex})
                 continue
             if not frame:
                 continue

@@ -32,7 +32,7 @@ def command():
         drone.land()
     if cmd=='speed':
         speed = request.form.get('speed')
-        logger.info({'action':'command','cmd':cmd,'speed':speed})
+        logger.info({'action':'command', 'cmd':cmd, 'speed': speed})
         if speed:
             drone.set_speed(int(speed))
     if cmd == 'up':
@@ -72,5 +72,6 @@ def video_generator():
 @app.route('/video/streaming')
 def video_feed():
     return Response(video_generator(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
 def run():
-    app.run(host=config.WEB_ADDRESS, port=config.WEB_PORT,threaded=True)
+    app.run(host=config.WEB_ADDRESS, port=config.WEB_PORT, threaded=True)
