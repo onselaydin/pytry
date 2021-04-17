@@ -155,7 +155,7 @@ digitalocean aşağıdaki şekilde çözdüm.
 sudo ps wwaux | grep -i sql
 sudo service mysql restart
 sudo netstat -plutn | grep -i sql
-GRANT ALL ON OnBlog.* TO root@95.10.150.78 IDENTIFIED BY 'Onsel123_'; 
+GRANT ALL ON OnBlog.* TO root@95.10.150.78 IDENTIFIED BY '*******'; 
 requiresecuretransport = on
 https://www.digitalocean.com/community/questions/warning-mysqli_real_connect-hy000-3159-connections-using-insecure-transport-are-prohibited-while-require_secure_transport-on
 
